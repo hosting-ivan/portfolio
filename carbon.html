@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="jquery-ui.js" crossorigin="anonymous"></script>
+<script src="init.js"></script>
+<script src="index.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<!--
+
+  script from constant dullart -->
+
+<link rel="stylesheet" href="home.css">
+    <script  src="index.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<!--title in bar of the browser-->
+    <script language=javascript>
+      var title = new MovingTitle(" Carbon® is a 3D printing technology company.", 110, 50);
+      title.init();
+      function MovingTitle(writeText, interval, visibleLetters) {
+        var _instance = {};
+        var _currId = 0;
+        var _numberOfLetters = writeText.length;
+        function updateTitle() {
+          _currId += 1;
+          if (_currId > _numberOfLetters - 1) {
+            _currId = 0;
+          }
+          var startId = _currId;
+          var endId = startId + visibleLetters;
+          var finalText;
+          if (endId < _numberOfLetters - 1) {
+            finalText = writeText.substring(startId, endId);
+          } else {
+            var cappedEndId = _numberOfLetters;
+            endId = endId - cappedEndId;
+            finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+          }
+          document.title = finalText;
+        }
+        _instance.init = function() {
+          setInterval(updateTitle, interval);
+        };
+        return _instance;
+      }
+    </script>
+		<link
+		  rel="icon"
+		  href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>🖨️</text></svg>"
+		/>
+
+  <title>🌴🌴🌴ivan🌴🌴🌴</title>
+
+  </style>
+
+
+<body>
+
+
+<div id="head">
+  <p><a href="index.html">Back</a><br>Carbon Inc.<br>
+  Brand</p>
+
+
+</div>
+
+<img class="imgPage" src="assets\carbon\carbon-wordmark.png">
+<div id="box">
+  <p>Carbon® is a 3D printing technology company helping businesses to develop better products and bring them to market in less time. Carbon is <br>a venture-backed company headquartered in Redwood City, CA.</p>
+	<p>During my time at Carbon, I participated in the brand relaunch, provided artistic direction for several campaigns, designed promotional materials, developed our packaging system, collaborated with a multitude of partner brands, and took the lead in designing for events.
+</p>
+</div>
+<br>
+<center>
+<video width="1040px" height="600px" autoplay loop muted>
+ <source src="assets\carbon\carbon-intro.webm" type="video/webm">
+ </video>
+ <br>
+ <br>
+ <br>
+<video width="1040px" height="600px" autoplay loop muted>
+  <source src="assets\carbon\launch3.webm" type="video/webm">
+  </video>
+</center>
+<br>
+<img class="imgPage" src="assets\carbon\cmc_title.png">
+<img class="imgPage" src="assets\carbon\event.png">
+<img class="imgPage" src="assets\carbon\amvp.png">
+<img class="imgPage" src="assets\carbon\bottles.png">
+<img class="imgPage" src="assets\carbon\band.gif">
+<img class="imgPage" src="assets\carbon\part4.png">
+<img class="imgPage" src="assets\carbon\4dfwdt.png">
+<img class="imgPage" src="assets\carbon\back.png">
+
+
+</div>
+
+</body>
