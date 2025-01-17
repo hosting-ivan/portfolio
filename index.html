@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <script language=javascript>
+      var title = new MovingTitle(" Ivan Chen is a designer from San Francisco.", 110, 50);
+      title.init();
+      function MovingTitle(writeText, interval, visibleLetters) {
+        var _instance = {};
+        var _currId = 0;
+        var _numberOfLetters = writeText.length;
+        function updateTitle() {
+          _currId += 1;
+          if (_currId > _numberOfLetters - 1) {
+            _currId = 0;
+          }
+          var startId = _currId;
+          var endId = startId + visibleLetters;
+          var finalText;
+          if (endId < _numberOfLetters - 1) {
+            finalText = writeText.substring(startId, endId);
+          } else {
+            var cappedEndId = _numberOfLetters;
+            endId = endId - cappedEndId;
+            finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+          }
+          document.title = finalText;
+        }
+        _instance.init = function() {
+          setInterval(updateTitle, interval);
+        };
+        return _instance;
+      }
+    </script>
+
+
+  <title>🌴🌴🌴ivan🌴🌴🌴</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>🌎</text></svg>"
+  />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="div1">
+        <p>
+          <b>Index</b>
+
+          <br />Please leave a message below.
+          <br />
+          <a href="http://m-a-d.com/">contactivanchen@gmail.com</a>  <br />
+          <a href="https://www.instagram.com/christopher_salter/"
+            >About</a>
+          <br />
+          <a href="about.html">Resume</a>
+        </p>
+
+        <p>
+          <br />
+          <a href="form.html">Form Energy</a> <br />
+          <a href="carbon.html">Carbon Inc</a> <br />
+          <a href="cmc.html">Center for Malware Research</a>
+          <br />
+          <a href="streetalk.html">StreeTalk: Public Installation in Palo Alto</a> <br />
+          <a href="fernweh.html">Fernweh: User Experience Design</a>
+          <br />
+              <a href="noguchi.html">Noguchi's Playscapes Web</a> <br />
+          <a href="super.html">SuperSuper: Modular Generated Typeface</a> <br />
+
+          <a href="watching.html">Watching: Designing for Surveillance</a> <br />
+            <a href="cryptography.html">Cryptography 001 Publication</a> <br />
+          <a href="06.html">Various ideas</a> <br />
+
+        </p>
+      </div>
+      <div class="div2">
+        <div class="image-grid">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

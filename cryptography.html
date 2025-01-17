@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>📘</text></svg>">
+
+    <!--title in bar of the browser-->
+        <script language=javascript>
+          var title = new MovingTitle("   Our relationship to privacy has changed radically since the widespread adoption of the internet.", 110, 50);
+          title.init();
+          function MovingTitle(writeText, interval, visibleLetters) {
+            var _instance = {};
+            var _currId = 0;
+            var _numberOfLetters = writeText.length;
+            function updateTitle() {
+              _currId += 1;
+              if (_currId > _numberOfLetters - 1) {
+                _currId = 0;
+              }
+              var startId = _currId;
+              var endId = startId + visibleLetters;
+              var finalText;
+              if (endId < _numberOfLetters - 1) {
+                finalText = writeText.substring(startId, endId);
+              } else {
+                var cappedEndId = _numberOfLetters;
+                endId = endId - cappedEndId;
+                finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+              }
+              document.title = finalText;
+            }
+            _instance.init = function() {
+              setInterval(updateTitle, interval);
+            };
+            return _instance;
+          }
+        </script>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="styles-00.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="div1">
+        <a href="index.html">Back</a><br/>
+        <b>Cryptography 001 Publication</b>
+        <br/>
+        Publication / Web
+<br/>
+    <br/>
+Project led by chris hamamoto<br/>
+        <br/>
+
+        <p>
+          Our relationship to privacy has changed radically since the widespread adoption of the internet. While it once was difficult to broadcast our message to an audience, it’s now a challenge to limit the reach of our communications and control our personal data. This is a publication for our various projects.
+        </p>
+      </div>
+      <div class="div2">
+        <div class="image-grid">
+
+            <img
+              class="image"
+              src="assets/cryptography/01.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/02.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/03.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/04.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/05.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/06.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/07.jpg"
+              alt=""
+            />
+            <img
+              class="image"
+              src="assets/cryptography/08.jpg"
+              alt=""
+            />
+
+        </div>
+      </div>
+      <!-- Add more images as needed -->
+    </div>
+  </body>
+</html>

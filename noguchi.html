@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>🌌</text></svg>">
+
+    <!--title in bar of the browser-->
+        <script language=javascript>
+          var title = new MovingTitle("   Noguchi's Playscapes is an experimental exhibition site that seeks to explore the vast and varied spaces on the net.", 110, 50);
+          title.init();
+          function MovingTitle(writeText, interval, visibleLetters) {
+            var _instance = {};
+            var _currId = 0;
+            var _numberOfLetters = writeText.length;
+            function updateTitle() {
+              _currId += 1;
+              if (_currId > _numberOfLetters - 1) {
+                _currId = 0;
+              }
+              var startId = _currId;
+              var endId = startId + visibleLetters;
+              var finalText;
+              if (endId < _numberOfLetters - 1) {
+                finalText = writeText.substring(startId, endId);
+              } else {
+                var cappedEndId = _numberOfLetters;
+                endId = endId - cappedEndId;
+                finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+              }
+              document.title = finalText;
+            }
+            _instance.init = function() {
+              setInterval(updateTitle, interval);
+            };
+            return _instance;
+          }
+        </script>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="styles-00.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="div1">
+        <a href="index.html">Back</a><br/>
+        <b>Noguchi's Playscape </b>
+        <br/>
+        Exhibition Site <br />
+        <br/>
+
+        <p>
+          Noguchi's Playscapes is an experimental exhibition site that seeks to explore the vast and varied spaces on the net. The project examines the web's different dimensions, from the flat surface of websites to the immersive experience of virtual reality spaces. The website allows visitors to navigate and interact with a range of digital environments and discover new ways of experiencing and engaging with the net.
+<br><br>
+Based on the works by Isamu Noguchi.
+        </p>
+      </div>
+      <div class="div2">
+        <div class="image-grid">
+          <video
+              class="full-video"
+              src="assets/noguchi/browse.webm"
+              autoplay
+              muted
+              loop
+            >
+              Your browser does not support the video tag.
+            </video>
+
+        </div>
+      </div>
+      <!-- Add more images as needed -->
+    </div>
+  </body>
+</html>
