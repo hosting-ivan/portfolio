@@ -64,9 +64,9 @@ body {
   grid-area: 1 / 2 / 2 / 3;
   overflow-y: auto;
   max-height: 100%;
-  max-width: 1080px; /* or any width that feels good */
+  max-width: 900px; /* or any width that feels good */
   padding: 0em;
-  font-size: 1.8em; /* ← Increase this value as needed */
+  font-size: 1.55em; /* ← Increase this value as needed */
   line-height: 1.5; /* Optional: makes larger text more readable */
 }
 
