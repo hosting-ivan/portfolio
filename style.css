@@ -1,43 +1,43 @@
 /* ---------------------------------
-   Root & Body Styles
+   Reset Body & HTML
 ----------------------------------- */
-html,
-body {
-  /* Gradient background */
-  background: linear-gradient(
-    135deg,
-    /* Brighter highlight */
-    #f8f8f8 0%,
-    /* Slightly darker */
-    #eaeaea 10%,
-    /* Subtle silver tone */
-    #d4d4d4 25%,
-    /* Another highlight area */
-    #ececec 40%,
-    /* Slightly more noticeable sky blue */
-    #e1effc 55%,
-    /* Bounce back to a lighter area */
-    #e8e8e8 70%,
-    /* Soft return to mid-silver */
-    #cfcfcf 85%,
-    /* End on a bright tone again */
-    #f8f8f8 100%
-  );
+html, body {
 
+    /* Gradient background */
+    background: linear-gradient(
+      135deg,
+      /* Brighter highlight */
+      #f8f8f8 0%,
+      /* Slightly darker */
+      #eaeaea 10%,
+      /* Subtle silver tone */
+      #d4d4d4 25%,
+      /* Another highlight area */
+      #ececec 40%,
+      /* Slightly more noticeable sky blue */
+      #e1effc 55%,
+      /* Bounce back to a lighter area */
+      #e8e8e8 70%,
+      /* Soft return to mid-silver */
+      #cfcfcf 85%,
+      /* End on a bright tone again */
+      #f8f8f8 100%
+    );
   background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;             /* page scrolls here */
 
-  margin: 0;              /* Remove default browser margin */
-  padding: 1.5em;         /* Consistent padding around the page */
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;        /* Base font size for desktop */
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
   line-height: 1.35;
   letter-spacing: -0.0125rem;
   color: black;
   text-rendering: optimizeLegibility !important;
   font-feature-settings: "kern";
-
-  height: 100%;
-  overflow: hidden;       /* Hide overflow for desktop (can adjust if needed) */
 }
 
 /* ---------------------------------
@@ -45,65 +45,95 @@ body {
 ----------------------------------- */
 .parent {
   display: grid;
-  grid-template-columns: 25% 75%;  /* Two-column layout on desktop */
-  grid-template-rows: auto auto;
-  grid-gap: 50px;                  /* Space between columns & rows */
-  /* No additional padding here because <body> already has padding */
+  /* no fixed height */
+  grid-template-columns: 25% 75%;  /* two columns side by side */
+  /* grid-template-rows removed */
+  gap: 50px;
+  padding: 1.5em;
 }
 
 /* ---------------------------------
-   Div1 & Div2 (Grid Areas)
+   Div1 & Div2
 ----------------------------------- */
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
-  /* Uniform padding inside the container */
+  overflow: hidden;
   padding: 1.5em;
 }
 
 .div2 {
   grid-area: 1 / 2 / 2 / 3;
+  /* removed inner scrolling so page scrollbar handles it */
   padding: 1.5em;
-  overflow-y: auto;               /* Allows scrolling if content is tall */
+  /* you can still use smooth scrolling on anchors if you like: */
+  scroll-behavior: smooth;
 }
 
 /* ---------------------------------
-   Image Grid
+   Image & Video Grid (inside .div2)
 ----------------------------------- */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto auto;
-  grid-gap: 10px;
-  padding: 5px;                   /* Small internal padding */
+  gap: 10px;
+  padding: 5px;
+
+  grid-auto-rows: min-content;
+  align-items: start;
 }
 
-.image {
-  max-width: 100%;
-  max-height: 650px;
+/* ---------------------------------
+   Full-width Media
+----------------------------------- */
+.full-image,
+.full-video,
+video.full-image {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 8px;
-  grid-column: span 2;           /* Spans both columns by default */
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
 }
 
-.full-image {
-  width: 97%;
-  max-height: 650px;
+/* ---------------------------------
+   Thumbnails & Videos (Option A)
+----------------------------------- */
+.image,
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 8px;
-  grid-column: span 2;           /* Spans both columns */
-  overflow: hidden;
+}
+.image2,
+.video2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: fill;
+  border-radius: 8px;
 }
 
 /* ---------------------------------
    Paragraph & Link Defaults
 ----------------------------------- */
 p {
-  margin: 1em;
+  margin: 0;
 }
 
 a {
-  color: #555555;
+  color: grey;
   text-decoration: underline;
   text-underline-offset: 1px;
 }
+
 
 /* ---------------------------------
    Mobile Layout (<= 768px)
@@ -111,43 +141,51 @@ a {
 @media (max-width: 768px) {
   html,
   body {
-    /* Adjust background or keep the gradient if you like */
-    background-color: white;
-    padding: 10px;             /* Smaller padding on mobile */
-    font-size: 14px;           /* Slightly smaller font for mobile */
-    overflow: auto;            /* Allow scrolling on mobile */
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
   }
 
   .parent {
-    grid-template-columns: 1fr;      /* One column layout */
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     grid-gap: 10px;
-    height: 100%;
-    overflow-y: auto;
-    /* Optional if you want container-specific padding as well
-       padding: 1em;
-    */
+    height: 100vh;
+    padding: 1.5em;
+    overflow: hidden;
   }
 
   .div1 {
-    grid-area: 2 / 1 / 3 / 2;        /* Stack under .div2 */
-    padding: 1em;                    /* Uniform padding for mobile */
+    grid-area: 1 / 1 / 2 / 2;
+    overflow: hidden;
+    padding: 1.5em;
   }
 
   .div2 {
-    grid-area: 1 / 1 / 2 / 2;        /* Stays on top */
-    padding: 1em;
+    grid-area: 2 / 1 / 3 / 2;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 1.5em;
   }
 
-  .image-grid {
-    grid-template-columns: 1fr;      /* Single column for images */
-    padding: 0;                      /* Adjust as needed */
+  /* Single-column images/videos on mobile */
+  .image-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 
   .image,
-  .full-image {
-    max-width: 100%;
-    border-radius: 4px;              /* Slightly smaller corner radius */
-    grid-column: span 1;
+  .video {
+    width: 100%;
+    height: auto;       /* Maintain aspect ratio */
+    object-fit: cover;  /* Maintain aspect ratio */
+    border-radius: 8px; /* Add rounded corners */
+    display: block;
   }
-}
+
+  .full-image {
+    width: 100%;
+    height: auto;       /* Maintain aspect ratio on mobi
