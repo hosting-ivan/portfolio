@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>👾</text></svg>">
+
+    <!--title in bar of the browser-->
+        <script language=javascript>
+          var title = new MovingTitle("   The Common Vulnerabilities and Exposures (CVE) system provides standardized identifiers for publicly known cybersecurity vulnerabilities. Maintained by the CVE Program and adopted globally by security vendors, researchers, and institutions, it serves as a core reference point for threat intelligence, vulnerability management, and coordinated disclosure.", 110, 50);
+          title.init();
+          function MovingTitle(writeText, interval, visibleLetters) {
+            var _instance = {};
+            var _currId = 0;
+            var _numberOfLetters = writeText.length;
+            function updateTitle() {
+              _currId += 1;
+              if (_currId > _numberOfLetters - 1) {
+                _currId = 0;
+              }
+              var startId = _currId;
+              var endId = startId + visibleLetters;
+              var finalText;
+              if (endId < _numberOfLetters - 1) {
+                finalText = writeText.substring(startId, endId);
+              } else {
+                var cappedEndId = _numberOfLetters;
+                endId = endId - cappedEndId;
+                finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+              }
+              document.title = finalText;
+            }
+            _instance.init = function() {
+              setInterval(updateTitle, interval);
+            };
+            return _instance;
+          }
+        </script>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="styles-00.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="div1">
+        <a href="index.html">Back</a>  <br />
+        <b>Common Vulnerabilities and Exposures</b>
+        <br />
+        Brand <br />
+        <br />
+
+        <p>
+          The Common Vulnerabilities and Exposures (CVE) system provides standardized identifiers for publicly known cybersecurity vulnerabilities. Maintained by the CVE Program and adopted globally by security vendors, researchers, and institutions, it serves as a core reference point for threat intelligence, vulnerability management, and coordinated disclosure.
+<br><br>
+          The brand has been redefined to reflect the growing complexity and global nature of cybersecurity threats. As vulnerabilities become more numerous and impactful, the identity of CVE is evolving to support greater clarity, consistency, and international usability.
+<br><br>
+        Design decisions reflect the role of CVE as critical digital infrastructure. The system uses modular layouts, clear and accessible typography, and machine-readable formatting to improve legibility and integration across platforms. Gradients generated from city coordinates highlight the globally distributed and collaborative nature of the cybersecurity community. A restrained visual language maintains focus on clarity, utility, and long-term trust.
+<br><br>
+          The updated identity supports CVE’s role as a global utility. It helps turn raw vulnerability data into clear signals that enable faster response, stronger coordination, and broader understanding across public and private sectors.        </p>
+      </div>
+      <div class="div2">
+        <div class="image-grid">
+            <video
+                class="full-image"
+                src="assets/cve/cve-reel.webm"
+                autoplay
+                muted
+                loop
+              >
+            </video>
+            <video
+                class="video2"
+                src="assets/cve/cve-logo-loops.webm"
+                autoplay
+                muted
+                loop
+              >
+            </video>
+            <video
+                class="video2"
+                src="assets/cve/cve-location-loop.webm"
+                autoplay
+                muted
+                loop
+              >
+              </video>
+            <img
+              class="image"
+              src="assets/cve/cve-building.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-indoors.png"
+              alt="Your Image Description"
+            />
+            <video
+                class="video2"
+                src="assets/cve/cve-webflow.webm"
+                autoplay
+                muted
+                loop
+              >
+            </video>
+            <video
+                class="video2"
+                src="assets/cve/cve_social.webm"
+                autoplay
+                muted
+                loop
+              >
+            </video>
+
+            <img
+              class="image"
+              src="assets/cve/cve-trends-outside.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-trends-outside-2.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-event-booth.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-trends-presentation.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-vector-shirt.png"
+              alt="Your Image Description"
+            />
+            <img
+              class="image"
+              src="assets/cve/cve-vector-bag.png"
+              alt="Your Image Description"
+            />
+
+        </div>
+      </div>
+      <!-- Add more images as needed -->
+    </div>
+  </body>
+</html>
