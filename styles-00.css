@@ -2,33 +2,14 @@
    Reset Body & HTML
 ----------------------------------- */
 html, body {
-  /* Gradient background */
-  background: linear-gradient(
-    135deg,
-    /* Brighter highlight */
-    #f7f7f7 0%,
-    /* Slightly darker */
-    #ebebeb 10%,
-    /* Subtle silver tone */
-    #d1d1d1 25%,
-    /* Another highlight area */
-    #eeeeee 40%,
-    /* Slight sky blue */
-    #f0f7fc 55%,
-    /* Bounce back to a lighter area */
-    #ededed 70%,
-    /* Soft return to mid-silver */
-    #cfcfcf 85%,
-    /* End on a bright tone again */
-    #f7f7f7 100%
-  );
+  background: white;
   background-size: 100% 100%;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  /* Make sure we occupy full viewport height */
-  overflow: hidden;  /* Disable scrolling on the whole page */
+  overflow-x: hidden;
+  overflow-y: auto;             /* page scrolls here */
 
   font-family: Roboto, sans-serif;
   font-size: 15px;
@@ -44,15 +25,10 @@ html, body {
 ----------------------------------- */
 .parent {
   display: grid;
-  /* Make the parent grid fill the viewport */
-  height: 100vh;
-  box-sizing: border-box;
-
-  /* You can keep your original columns/rows */
-  grid-template-columns: 25% 75%;
-  grid-template-rows: auto auto;
-  grid-gap: 50px;
-
+  /* no fixed height */
+  grid-template-columns: 25% 75%;  /* two columns side by side */
+  /* grid-template-rows removed */
+  gap: 50px;
   padding: 1.5em;
 }
 
@@ -67,59 +43,62 @@ html, body {
 
 .div2 {
   grid-area: 1 / 2 / 2 / 3;
-  overflow-y: auto;
-  max-height: 100%;
+  /* removed inner scrolling so page scrollbar handles it */
   padding: 1.5em;
+  /* you can still use smooth scrolling on anchors if you like: */
+  scroll-behavior: smooth;
 }
 
 /* ---------------------------------
-   Image & Video Grids
+   Image & Video Grid (inside .div2)
 ----------------------------------- */
-.image-grid,
-.video-grid {
+.image-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Consistent column layout for both */
-  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   padding: 5px;
+
+  grid-auto-rows: min-content;
+  align-items: start;
 }
 
+/* ---------------------------------
+   Full-width Media
+----------------------------------- */
+.full-image,
+.full-video,
+video.full-image {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
+}
+
+/* ---------------------------------
+   Thumbnails & Videos (Option A)
+----------------------------------- */
 .image,
 .video {
-  width: 100%;            /* Fill the grid cell's width */
-  height: 100%;           /* Fill the grid cell's height */
-  object-fit: cover;      /* Maintain aspect ratio while covering the cell */
-  border-radius: 8px;     /* Add rounded corners */
-  display: block;         /* Avoid inline spacing issues */
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
 }
-
-/* ---------------------------------
-   Full-Image Styles
------------------------------------ */
-.full-image {
-  width: 100%;            /* Fill the container width */
-  height: 100%;           /* Now matches .image */
-  object-fit: cover;      /* Maintain aspect ratio while filling the container */
-  border-radius: 8px;     /* Consistent corners */
-  grid-column: span 2;    /* Span across two columns */
-  display: block;         /* Avoid inline display issues */
-  margin: 0;              /* Remove extra margin */
-  align-self: stretch;    /* Stretch to fill the grid cell vertically */
-  justify-self: stretch;  /* Stretch to fill the grid cell horizontally */
-}
-
-/* ---------------------------------
-   Full-Video Styles
------------------------------------ */
-.full-video {
-  width: 100%;            /* Fill the container width */
-  height: 100%;           /* Now matches .video */
-  object-fit: cover;      /* Maintain aspect ratio while covering the box */
-  border-radius: 8px;     /* Add consistent rounded corners */
-  grid-column: span 2;    /* Span across two columns */
-  display: block;         /* Avoid inline display issues */
-  margin: 0;              /* Remove extra margin so it behaves similarly */
-  align-self: stretch;    /* Stretch to fill the grid cell vertically */
-  justify-self: stretch;  /* Stretch to fill the grid cell horizontally */
+.image2,
+.video2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: fill;
+  border-radius: 8px;
 }
 
 /* ---------------------------------
@@ -134,6 +113,7 @@ a {
   text-decoration: underline;
   text-underline-offset: 1px;
 }
+
 
 /* ---------------------------------
    Mobile Layout (<= 768px)
