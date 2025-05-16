@@ -2,27 +2,25 @@
    Reset Body & HTML
 ----------------------------------- */
 html, body {
-
-    /* Gradient background */
-    background: linear-gradient(
-      135deg,
-      /* Brighter highlight */
-      #f8f8f8 0%,
-      /* Slightly darker */
-      #eaeaea 10%,
-      /* Subtle silver tone */
-      #d4d4d4 25%,
-      /* Another highlight area */
-      #ececec 40%,
-      /* Slightly more noticeable sky blue */
-      #e1effc 55%,
-      /* Bounce back to a lighter area */
-      #e8e8e8 70%,
-      /* Soft return to mid-silver */
-      #cfcfcf 85%,
-      /* End on a bright tone again */
-      #f8f8f8 100%
-    );
+  background: linear-gradient(
+    135deg,
+    /* Brighter highlight */
+    #f8f8f8 0%,
+    /* Slightly darker */
+    #eaeaea 10%,
+    /* Subtle silver tone */
+    #d4d4d4 25%,
+    /* Another highlight area */
+    #ececec 40%,
+    /* Slightly more noticeable sky blue */
+    #e1effc 55%,
+    /* Bounce back to a lighter area */
+    #e8e8e8 70%,
+    /* Soft return to mid-silver */
+    #cfcfcf 85%,
+    /* End on a bright tone again */
+    #f8f8f8 100%
+  );
   background-size: 100% 100%;
   margin: 0;
   padding: 0;
@@ -94,6 +92,23 @@ video.full-image {
   max-height: 60vh;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
+}
+/* ---------------------------------
+   Full-width Media (no zoom)
+----------------------------------- */
+.full-video-contain,
+video.full-video-contain {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;      /* shows the whole frame, no cropping */
   border-radius: 8px;
   display: block;
   margin: 0;
