@@ -2,27 +2,27 @@
    Reset Body & HTML
 ----------------------------------- */
 html, body {
+  /* Gradient background */
+  background: linear-gradient(
+    135deg,
+    /* bright cool highlight */
+    #f6f7f8 0%,
+    /* very light steel blue */
+    #e9eaec 10%,
+    /* mid-silver with a hint of blue */
+    #c8ced4 25%,
+    /* soft sky-blue reflection */
+    #ebeff2 40%,
+    /* deeper silver-blue core */
+    #d1e2ea 55%,
+    /* gentle return to light highlight */
+    #e6eaed 70%,
+    /* muted metallic mid-tone */
+    #bbc1c7 85%,
+    /* end on the bright cool highlight */
+    #f6f7f8 100%
+  );
 
-    /* Gradient background */
-    background: linear-gradient(
-      135deg,
-      /* Brighter highlight */
-      #f8f8f8 0%,
-      /* Slightly darker */
-      #eaeaea 10%,
-      /* Subtle silver tone */
-      #d4d4d4 25%,
-      /* Another highlight area */
-      #ececec 40%,
-      /* Slightly more noticeable sky blue */
-      #e1effc 55%,
-      /* Bounce back to a lighter area */
-      #e8e8e8 70%,
-      /* Soft return to mid-silver */
-      #cfcfcf 85%,
-      /* End on a bright tone again */
-      #f8f8f8 100%
-    );
   background-size: 100% 100%;
   margin: 0;
   padding: 0;
@@ -120,6 +120,21 @@ video.full-image {
   object-fit: fill;
   border-radius: 8px;
 }
+.video-link {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;    /* make the rounded corners “cut” the video */
+  cursor: pointer;
+}
+
+.video-link .video2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 
 /* ---------------------------------
    Paragraph & Link Defaults
@@ -129,7 +144,7 @@ p {
 }
 
 a {
-  color: grey;
+  color: #555555;
   text-decoration: underline;
   text-underline-offset: 1px;
 }
