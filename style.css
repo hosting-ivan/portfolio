@@ -3,25 +3,7 @@
 ----------------------------------- */
 html, body {
   /* Gradient background */
-  background: linear-gradient(
-    135deg,
-    /* bright cool highlight */
-    #f6f7f8 0%,
-    /* very light steel blue */
-    #e9eaec 10%,
-    /* mid-silver with a hint of blue */
-    #c8ced4 25%,
-    /* soft sky-blue reflection */
-    #ebeff2 40%,
-    /* deeper silver-blue core */
-    #d1e2ea 55%,
-    /* gentle return to light highlight */
-    #e6eaed 70%,
-    /* muted metallic mid-tone */
-    #bbc1c7 85%,
-    /* end on the bright cool highlight */
-    #f6f7f8 100%
-  );
+  background: white;
 
   background-size: 100% 100%;
   margin: 0;
