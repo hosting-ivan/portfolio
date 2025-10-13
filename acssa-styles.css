@@ -52,102 +52,83 @@ html, body {
 
 /* ---------------------------------
    Image & Video Grid (inside .div2)
+   Grid: multiple columns, fixed row units
 ----------------------------------- */
 .image-grid {
+  --gap: 10px;
+  --row: 80px;                 /* base row height - optimized for 16:9 videos */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(9, 1fr);  /* 9 columns for flexible layout */
+  grid-auto-rows: var(--row);  /* key: fixed row unit */
+  grid-auto-flow: dense;
+  gap: var(--gap);
   padding: 5px;
-
-  grid-auto-rows: min-content;
-  align-items: start;
 }
 
 /* ---------------------------------
    Media Box Placeholders
+   Generic tile shell
 ----------------------------------- */
 .media-box {
-  background-color: #007BFF;
+  position: relative;
   border-radius: 8px;
-  width: 100%;
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Make tiles keep their height even when empty (important for placeholders) */
+.media-box::before {
+  content: "";
   display: block;
+  height: 100%;
 }
 
-/* Full-width box (spans 2 columns) */
-.media-box.full {
-  grid-column: span 2;
-  aspect-ratio: 16 / 9;
+/* Video and Image styling within media boxes */
+.media-box video,
+.media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* Tall box (portrait orientation) */
+
+/* Column-span sizes (controls horizontal width) */
 .media-box.tall {
-  aspect-ratio: 3 / 4;
+  grid-column: span 2;  /* tall takes 2 columns out of 9 */
+  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
 }
 
-/* Wide box (landscape orientation) */
 .media-box.wide {
-  aspect-ratio: 4 / 3;
+  grid-column: span 7;  /* wide takes 7 columns out of 9 */
+  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
+}
+
+.media-box.full {
+  grid-column: 1 / -1;  /* spans all 9 columns */
+  grid-row: span 7;     /* takes 7 rows in height (standard viewports) */
 }
 
 /* ---------------------------------
-   Full-width Media
+   Typography Hierarchy
 ----------------------------------- */
-.full-image,
-.full-video,
-video.full-image {
-  grid-column: span 2;
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
+h1 {
+  font-size: 28px;
+  font-weight: bold;
   margin: 0;
-  align-self: start;
-  justify-self: stretch;
-}
-/* ---------------------------------
-   Full-width Media (no zoom)
------------------------------------ */
-.full-video-contain,
-video.full-video-contain {
-  grid-column: span 2;
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;      /* shows the whole frame, no cropping */
-  border-radius: 8px;
-  display: block;
-  margin: 0;
-  align-self: start;
-  justify-self: stretch;
+  line-height: 1.2;
 }
 
-/* ---------------------------------
-   Thumbnails & Videos (Option A)
------------------------------------ */
-.image,
-.video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.image2,
-.video2 {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: fill;
-  border-radius: 8px;
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 0.5em 0;
+  line-height: 1.3;
 }
 
-/* ---------------------------------
-   Paragraph & Link Defaults
------------------------------------ */
 p {
   margin: 0;
 }
@@ -167,6 +148,24 @@ a {
     font-size: 10px;
   }
 }
+
+/* ---------------------------------
+   Ultra-wide viewports (>= 1920px)
+----------------------------------- */
+@media (min-width: 1920px) {
+  .media-box.tall {
+    grid-row: span 9;  /* takes 9 rows in height for ultra-wide */
+  }
+
+  .media-box.wide {
+    grid-row: span 9;  /* takes 9 rows in height for ultra-wide */
+  }
+
+  .media-box.full {
+    grid-row: span 11;  /* takes 11 rows in height for ultra-wide */
+  }
+}
+
 
 /* ---------------------------------
    Mobile Layout (<= 768px)
@@ -205,28 +204,12 @@ a {
   }
 
   /* Single-column images/videos on mobile */
-  .image-grid,
-  .video-grid {
+  .image-grid {
     grid-template-columns: 1fr;
   }
 
-  /* All media boxes span full width on mobile */
-  .media-box.full,
-  .media-box.tall,
-  .media-box.wide {
-    grid-column: span 1;
-    aspect-ratio: 16 / 9;  /* uniform aspect ratio on mobile */
+  /* All media boxes collapse to single column on mobile */
+  .media-box.full {
+    grid-column: auto;  /* full just becomes single-column */
   }
-
-  .image,
-  .video {
-    width: 100%;
-    height: auto;       /* Maintain aspect ratio */
-    object-fit: cover;  /* Maintain aspect ratio */
-    border-radius: 8px; /* Add rounded corners */
-    display: block;
-  }
-
-  .full-image {
-    width: 100%;
-    height: auto;       /* Maintain aspect ratio on mobi
+}

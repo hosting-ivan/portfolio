@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.95em' font-size='80'>✨</text></svg>">
+
+    
+        <script language=javascript>
+          var title = new MovingTitle("   The Alameda County Social Services Agency provides resources and opportunities in a culturally responsive manner to enhance the quality of life in our community by protecting, educating, and empowering individuals and families.", 110, 50);
+          title.init();
+          function MovingTitle(writeText, interval, visibleLetters) {
+            var _instance = {};
+            var _currId = 0;
+            var _numberOfLetters = writeText.length;
+            function updateTitle() {
+              _currId += 1;
+              if (_currId > _numberOfLetters - 1) {
+                _currId = 0;
+              }
+              var startId = _currId;
+              var endId = startId + visibleLetters;
+              var finalText;
+              if (endId < _numberOfLetters - 1) {
+                finalText = writeText.substring(startId, endId);
+              } else {
+                var cappedEndId = _numberOfLetters;
+                endId = endId - cappedEndId;
+                finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+              }
+              document.title = finalText;
+            }
+            _instance.init = function() {
+              setInterval(updateTitle, interval);
+            };
+            return _instance;
+          }
+        </script>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="acssa-styles.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="div1">
+        <a href="index.html">Back</a>  <br />
+        <b>ACSSA Self-Service Portal Bridge</b>
+        <br />
+        User experience <br />
+        <br />
+
+        <a href="https://hosting-ivan.github.io/acssa-portal/">Website Demo</a> <br /> <br />
+
+        <p>
+         This project connects ACSSA’s printed outreach materials with its online self-service portal. The goal is to help residents quickly understand what support is available and take the next step, whether that’s checking eligibility, applying for help, or finding local services.<br><br>
+       Many people who need help aren’t sure where to start. They often feel overwhelmed by government terms or think applying will take too long. The infographic is designed to make that first step easier. It gives a clear overview of what ACSSA offers and points directly to the online portal through a QR code and short link.
+      <br><br>
+      The project moves ACSSA from general awareness to guided action. It makes applying for help feel possible and approachable. By aligning the printed and digital experience, the design builds familiarity, trust, and measurable results from first glance to final outcome.
+      </p>
+         
+
+
+
+
+
+      </div>
+      <div class="div2">
+        <div class="image-grid">
+          <!-- Row 1: Full -->
+          <div class="media-box full">
+            <img src="assets/acssa/1.png" alt="">
+          </div>
+
+          <!-- Row 2: left tall, right wide -->
+          <div class="media-box tall">
+            <img src="assets/acssa/2-1.jpg" alt="">
+          </div>
+          <div class="media-box wide">
+            <video autoplay loop muted playsinline>
+              <source src="assets/acssa/2-2.webm" type="video/webm">
+            </video>
+          </div>
+
+          <!-- Row 3: left wide, right tall -->
+          <div class="media-box wide">
+            <video autoplay loop muted playsinline>
+              <source src="assets/acssa/3-1.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="media-box tall">
+            <img src="assets/acssa/3-2.jpg" alt="">
+          </div>
+
+          <!-- Row 4: Full -->
+          <div class="media-box full">
+            <img src="assets/acssa/4.svg" alt="">
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
