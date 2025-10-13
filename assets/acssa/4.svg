@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1280" viewBox="0 0 1920 1280" preserveAspectRatio="xMidYMid meet">
+  <rect width="1920" height="1280" fill="#E3E7EC"/><g transform="translate(0,100.0) scale(0.5)"><rect width="3840" height="2160" fill="#0b1220"/>
+  <foreignObject x="0" y="0" width="3840" height="2160">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0; padding:0;">
+      <style>
+        :root{
+          --ink:#0e1b2a;
+          --muted:#5b6a7a;
+          --bg:#f7faff;
+          --card:#ffffff;
+          --line:#d9e3ef;
+          --accent:#1e6aa8;
+          --c1:#075985; --c2:#2563eb; --c3:#0f766e; --c4:#a855f7;
+          --c5:#b45309; --c6:#7c3aed; --c7:#0ea5e9;
+        }
+        *{box-sizing:border-box}
+        .canvas{
+          width:3840px;height:2160px;
+          background: radial-gradient(1200px 1200px at 85% 15%, #e9f4ff 0%, var(--bg) 60%, #eef3f8 100%);
+          padding:120px 120px 80px; position:relative;
+          font-family: Inter, Segoe UI, system-ui, -apple-system, Arial, sans-serif; color:var(--ink);
+        }
+        .header{ display:grid; grid-template-columns:1fr; gap:24px; align-items:end; margin-bottom:48px; }
+        .h-title{ font-weight:800; letter-spacing:-.02em; font-size:108px; line-height:1.05; margin:0; }
+        .h-title .line2{ display:block; }
+        .h-sub{ font-size:42px; color:var(--muted); margin:18px 0 0 }
+        .stages{ display:grid; grid-template-columns: repeat(7, 1fr); gap:24px; margin-top:28px; align-items:stretch; }
+        .stage{
+          background:var(--card); border:1px solid var(--line); border-radius:24px;
+          display:flex; flex-direction:column; min-height:1280px; position:relative;
+          box-shadow:0 10px 30px rgba(7,16,45,.05); overflow:hidden;
+        }
+        .flag{ color:#fff; font-weight:800; letter-spacing:.06em; padding:20px 24px; font-size:34px; text-transform:uppercase; }
+        .flag small{display:block;font-size:24px;opacity:.8;font-weight:700;margin-top:4px}
+        .stage:nth-child(1) .flag{background:linear-gradient(90deg,var(--c1),#0ea5e9)}
+        .stage:nth-child(2) .flag{background:linear-gradient(90deg,var(--c2),#60a5fa)}
+        .stage:nth-child(3) .flag{background:linear-gradient(90deg,var(--c3),#14b8a6)}
+        .stage:nth-child(4) .flag{background:linear-gradient(90deg,var(--c4),#c084fc)}
+        .stage:nth-child(5) .flag{background:linear-gradient(90deg,var(--c5),#f59e0b)}
+        .stage:nth-child(6) .flag{background:linear-gradient(90deg,var(--c6),#a78bfa)}
+        .stage:nth-child(7) .flag{background:linear-gradient(90deg,var(--c7),#67e8f9)}
+        /* Increased inner padding for more breathing room */
+        .stage-body{padding:38px 38px 42px;display:flex;flex-direction:column;gap:22px}
+        .block{ background:#f8fbff;border:1px solid #e3edf7;border-radius:18px;padding:28px 28px 32px; }
+        .block h4{margin:0 0 14px;font-size:34px;letter-spacing:.01em}
+        .block ul{margin:0;padding-left:40px;font-size:30px;line-height:1.5}
+        .block li{margin:10px 0}
+        .block--thoughts{background:#fff6f1;border-color:#ffe0c7}
+        .block--opp{background:#f3fff6;border-color:#cfeeda}
+        .footer{ position:absolute; left:120px; right:120px; bottom:70px;
+          display:flex; justify-content:space-between; align-items:center; gap:24px; }
+        .kicker{font-size:36px;color:#274055}
+        .qr{ border:3px dashed #9bb7d6;border-radius:18px;padding:16px 20px;font-size:32px;color:#274055;background:#eaf3ff }
+      </style>
+
+      <div class="canvas" role="img" aria-label="Infographic of the ACSSA user journey from discovery to receiving services">
+        <header class="header">
+          <div>
+            <h1 class="h-title">
+              <span class="line1">Getting help with ACSSA</span>
+              <span class="line2">The user journey</span>
+            </h1>
+            <p class="h-sub">From seeing an agency infographic to finishing a self service request: what people do, think, and need at each step.</p>
+          </div>
+        </header>
+
+        <section class="stages">
+          <article class="stage">
+            <div class="flag">1 • Discover<small>Trigger moments</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Search "food or housing help Alameda"</li>
+                  <li>Ask a friend or clinic staff</li>
+                  <li>See an ACSSA infographic in a lobby or office</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>I need help. Where do I start?</li>
+                  <li>Can I do this on my phone?</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Plain language headline and top needs</li>
+                  <li>QR plus short URL plus phone</li>
+                  <li>Languages shown at a glance</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">2 • Decide<small>At the infographic</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Scan services, metrics, and a testimonial</li>
+                  <li>Choose a call to action to start</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>Looks legit. How long will it take?</li>
+                  <li>I want help in my language.</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Three clear calls to action: eligibility, apply, near me</li>
+                  <li>Reassurance: about 12 to 15 minutes · secure · mobile friendly</li>
+                  <li>Language badges and TTY</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">3 • Land<small>Homepage</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>QR opens the portal homepage</li>
+                  <li>Sees the same headline and the same calls to action</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>This matches the poster. I will start.</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Quick actions: Upload, Track, Book, Replace, Report</li>
+                  <li>Life event choices for non experts</li>
+                  <li>The same metrics and the same quote for trust</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">4 • Guide<small>Eligibility</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>One question per screen</li>
+                  <li>Select language and see a time estimate</li>
+                  <li>Save and resume later</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>This feels doable.</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Progress bar and a short privacy note</li>
+                  <li>ZIP autofill and a help link or chat</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">5 • Apply<small>Self service</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Fill the form and upload documents with the camera</li>
+                  <li>Sign electronically and receive a confirmation number</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>What happens next?</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Timeline of next steps</li>
+                  <li>Text or email updates and a link to Track</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">6 • Track &amp; Message<small>Stay informed</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Check status and required documents</li>
+                  <li>Book an interview and get reminders</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>I know where I am in the process.</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Checklist and due date chips</li>
+                  <li>Calendar and live chat hand off</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage">
+            <div class="flag">7 • Receive &amp; Share<small>Outcome</small></div>
+            <div class="stage-body">
+              <div class="block">
+                <h4>Actions</h4>
+                <ul>
+                  <li>Benefits activated</li>
+                  <li>What to expect next message</li>
+                  <li>Optional feedback</li>
+                </ul>
+              </div>
+              <div class="block block--thoughts">
+                <h4>Thoughts</h4>
+                <ul>
+                  <li>That worked.</li>
+                </ul>
+              </div>
+              <div class="block block--opp">
+                <h4>Opportunities</h4>
+                <ul>
+                  <li>Cross links to childcare, jobs, and housing</li>
+                  <li>Print a resources sheet or refer a friend</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <footer class="footer">
+          <div class="kicker"><strong>From poster to portal:</strong> clear CTAs → guided steps → simple uploads → transparent status.</div>
+          <div class="qr">Scan QR or visit: acssa.gov/start</div>
+        </footer>
+      </div>
+    </body>
+  </foreignObject>
+</g></svg>
