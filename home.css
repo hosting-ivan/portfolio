@@ -23,11 +23,12 @@ body {
 
   margin: 0;              /* Remove default browser margin */
   padding: 1.5em;         /* Consistent padding around the page */
-  font-family: "Roboto", sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-size: 18px;        /* Base font size for desktop */
+  font-weight: 450;
   line-height: 1.35;
   letter-spacing: -0.0125rem;
-  color: black;
+  color: #1a1a1a;
   text-rendering: optimizeLegibility !important;
   font-feature-settings: "kern";
 
@@ -101,9 +102,19 @@ p {
 }
 
 a {
-  color: #555555;
+  color: #2d2d2d;
   text-decoration: underline;
   text-underline-offset: 1px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
 }
 
 /* ---------------------------------
@@ -121,35 +132,29 @@ a {
 @media (max-width: 768px) {
   html,
   body {
-    /* Adjust background or keep the gradient if you like */
     background-color: white;
-    padding: 10px;             /* Smaller padding on mobile */
-    font-size: 14px;           /* Slightly smaller font for mobile */
-    overflow: auto;            /* Allow scrolling on mobile */
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
   }
 
   .parent {
-    grid-template-columns: 1fr;      /* One column layout */
-    grid-template-rows: auto 1fr;
-    grid-gap: 10px;
-    height: 100%;
-    overflow-y: auto;
-    /* Optional if you want container-specific padding as well
-       padding: 1em;
-    */
-  }
-
-  .div1 {
-    grid-area: 1 / 1 / 2 / 2; /* Top */       /* Stack under .div2 */
-    padding: 1em;                    /* Uniform padding for mobile */
-  }
-
-  .div2 {
-    grid-area: 2 / 1 / 3 / 2; /* Bottom */       /* Stays on top */
+    display: block;
     padding: 1em;
+  }
 
-font-size: 1.4em; /* ↓ Slightly smaller than desktop */
-line-height: 1.5;
+  .div1,
+  .div2,
+  .div3 {
+    grid-area: auto;
+    overflow: visible;
+    padding: 1em;
+    margin-bottom: 2em;
+    max-width: 100%;
+    font-size: 1em;
+    line-height: 1.5;
   }
 
   .image-grid {
