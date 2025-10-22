@@ -1,21 +1,42 @@
 /* ---------------------------------
+   Material Design 3 - CSS Variables
+----------------------------------- */
+:root {
+  /* GMD3 Typography Scale for project pages */
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-large-line-height: 24px;
+  --md-sys-typescale-body-large-weight: 400;
+
+  /* GMD3 Spacing (4dp base) */
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-5: 20px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+
+  /* GMD3 Border Radius */
+  --md-sys-shape-corner-medium: 12px;
+
+  /* Custom spacing */
+  --spacing-gap-large: 50px;
+}
+
+/* ---------------------------------
    Reset Body & HTML
 ----------------------------------- */
 html, body {
-  background:white
-  );
+  background: white;
   background-size: 100% 100%;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;             /* page scrolls here */
+  overflow-y: auto;
 
   font-family: "Work Sans", sans-serif;
-  font-size: 15px;
-  font-weight: 450;
-  line-height: 1.35;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  line-height: var(--md-sys-typescale-body-large-line-height);
   letter-spacing: -0.0125rem;
   color: #1a1a1a;
   text-rendering: optimizeLegibility !important;
@@ -27,11 +48,11 @@ html, body {
 ----------------------------------- */
 .parent {
   display: grid;
-  /* no fixed height */
-  grid-template-columns: 25% 75%;  /* two columns side by side */
-  /* grid-template-rows removed */
-  gap: 50px;
-  padding: 1.5em;
+  grid-template-columns: 35% 65%;  /* wider left column for better text readability */
+  gap: var(--spacing-gap-large);
+  padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 /* ---------------------------------
@@ -39,15 +60,18 @@ html, body {
 ----------------------------------- */
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
-  overflow: hidden;
-  padding: 1.5em;
+  overflow: visible;
+  padding: var(--md-sys-spacing-5);
+}
+
+.div1 p {
+  max-width: 65ch;  /* Optimal line length: ~65 characters for readability */
+  line-height: 1.6;
 }
 
 .div2 {
   grid-area: 1 / 2 / 2 / 3;
-  /* removed inner scrolling so page scrollbar handles it */
-  padding: 1.5em;
-  /* you can still use smooth scrolling on anchors if you like: */
+  padding: var(--md-sys-spacing-5);
   scroll-behavior: smooth;
 }
 
@@ -57,8 +81,8 @@ html, body {
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 5px;
+  gap: var(--md-sys-spacing-4);
+  padding: 0;
 
   grid-auto-rows: min-content;
   align-items: start;
@@ -69,7 +93,7 @@ html, body {
 ----------------------------------- */
 .media-box {
   background-color: #007BFF;
-  border-radius: 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
   width: 100%;
   display: block;
 }
@@ -102,7 +126,7 @@ video.full-image {
   max-height: 60vh;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
   display: block;
   margin: 0;
   align-self: start;
@@ -119,7 +143,7 @@ video.full-video-contain {
   max-height: 80vh;
   aspect-ratio: 16 / 9;
   object-fit: contain;      /* shows the whole frame, no cropping */
-  border-radius: 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
   display: block;
   margin: 0;
   align-self: start;
@@ -135,7 +159,7 @@ video.full-video-contain {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
 }
 .image2,
 .video2 {
@@ -143,7 +167,7 @@ video.full-video-contain {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: fill;
-  border-radius: 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
 }
 
 /* ---------------------------------
@@ -156,7 +180,7 @@ p {
 a {
   color: #2d2d2d;
   text-decoration: underline;
-  text-underline-offset: 1px;
+  text-underline-offset: 3px;
   transition: all 0.3s ease;
 }
 
@@ -171,33 +195,66 @@ a:hover {
 
 
 /* ---------------------------------
-   Standard Viewports (< 1920px)
+   GMD3 Responsive Breakpoints
 ----------------------------------- */
-@media (max-width: 1919px) {
-  html, body {
-    font-size: 10px;
+
+/* Large & Extra-Large (Wide Desktop): 1240px+ */
+@media (min-width: 1240px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-8);
   }
 }
 
-/* ---------------------------------
-   Mobile Layout (<= 768px)
------------------------------------ */
-@media (max-width: 768px) {
+/* Expanded (Desktop): 905px - 1239px */
+@media (min-width: 905px) and (max-width: 1239px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-6);
+  }
+}
+
+/* Medium (Tablet): 600px - 904px */
+@media (min-width: 600px) and (max-width: 904px) {
+  .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    overflow: visible;
+    padding: var(--md-sys-spacing-6);
+    margin-bottom: var(--md-sys-spacing-6);
+  }
+
+  .div1 p {
+    max-width: 100%;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Compact (Mobile): 0 - 599px */
+@media (max-width: 599px) {
   html,
   body {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: auto;
-    margin: 0;
-    padding: 0;
     font-size: 14px;
-    font-family: "Work Sans", sans-serif;
-    font-weight: 450;
   }
 
   .parent {
     display: block;
-    padding: 1.5em;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
   }
 
   .div1,
@@ -205,8 +262,12 @@ a:hover {
   .div3 {
     grid-area: auto;
     overflow: visible;
-    padding: 1.5em;
-    margin-bottom: 2em;
+    padding: var(--md-sys-spacing-5);
+    margin-bottom: var(--md-sys-spacing-5);
+  }
+
+  .div1 p {
+    max-width: 100%;
   }
 
   /* Single-column images/videos on mobile */
@@ -220,18 +281,18 @@ a:hover {
   .media-box.tall,
   .media-box.wide {
     grid-column: span 1;
-    aspect-ratio: 16 / 9;  /* uniform aspect ratio on mobile */
+    aspect-ratio: 16 / 9;
   }
 
   .image,
   .video {
     width: 100%;
-    height: auto;       /* Maintain aspect ratio */
-    object-fit: cover;  /* Maintain aspect ratio */
-    border-radius: 8px; /* Add rounded corners */
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--md-sys-shape-corner-medium);
     display: block;
   }
 
   .full-image {
     width: 100%;
-    height: auto;       /* Maintain aspect ratio on mobi
+    height: auto;
