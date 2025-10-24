@@ -43,7 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="acssa-styles.css" />
+    <link rel="stylesheet" href="acssa-styles-v2.css" />
 
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
@@ -74,23 +74,56 @@
 
       </div>
       <div class="div2">
+        <!-- Four-Image Collage Layout -->
+        <div class="collage-grid">
+          <!-- Primary Image: 00 (Left, full height) -->
+          <div class="primary-image">
+            <img src="assets/acssa/00.jpg" alt="Primary image">
+          </div>
+
+          <!-- Top-Right: 01 -->
+          <div class="top-right-image">
+            <img src="assets/acssa/01.jpg" alt="Image 01">
+          </div>
+
+          <!-- Bottom-Right Section: 02 and 03 -->
+          <div class="bottom-right-section">
+            <!-- Bottom-Left: 02 -->
+            <div class="bottom-left-image">
+              <img src="assets/acssa/02.jpg" alt="Image 02">
+            </div>
+
+            <!-- Bottom-Right: 03 -->
+            <div class="bottom-right-image">
+              <img src="assets/acssa/03.jpg" alt="Image 03">
+            </div>
+          </div>
+        </div>
+
         <div class="image-grid">
           <!-- Row 1: Full -->
+          <div class="media-box full">
+            <img src="assets/acssa/4.png" alt="">
+          </div>
+        </div>
+
+        <div class="image-grid">
+          <!-- Row 2: Full -->
           <div class="media-box full">
             <img src="assets/acssa/1.png" alt="">
           </div>
 
-          <!-- Row 2: left tall, right wide -->
+          <!-- Row 3: left tall, right wide -->
           <div class="media-box tall">
             <img src="assets/acssa/2-1.jpg" alt="">
           </div>
-          <div class="media-box wide">
+          <div class="media-box wide video-contain">
             <video autoplay loop muted playsinline>
               <source src="assets/acssa/2-2.webm" type="video/webm">
             </video>
           </div>
 
-          <!-- Row 3: left wide, right tall -->
+          <!-- Row 4: left wide, right tall -->
           <div class="media-box wide">
             <video autoplay loop muted playsinline>
               <source src="assets/acssa/3-1.webm" type="video/webm">
@@ -99,12 +132,10 @@
           <div class="media-box tall">
             <img src="assets/acssa/3-2.jpg" alt="">
           </div>
-
-          <!-- Row 4: Full -->
-          <div class="media-box full">
-            <img src="assets/acssa/4.png" alt="">
-          </div>
         </div>
+      </div>
     </div>
+
+    <script src="lightbox.js"></script>
   </body>
 </html>

@@ -175,6 +175,92 @@ a:hover {
   .media-box.full {
     grid-row: span 11;  /* takes 11 rows in height for ultra-wide */
   }
+
+  .collage-grid {
+    min-height: 700px;  /* Much taller on ultrawide viewports */
+    height: 700px;  /* Fixed height on ultrawide for better control */
+  }
+}
+
+
+/* ---------------------------------
+   Four-Image Collage Layout
+   Left: Primary image (full height)
+   Right: Three supporting images
+----------------------------------- */
+.collage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Two equal halves */
+  grid-template-rows: 1fr 1fr;     /* Two rows */
+  gap: 10px;  /* Match media-box gap */
+  padding: 5px;  /* Match media-box padding */
+  max-width: 100%;
+  min-height: 280px;  /* Much shorter, more compact */
+}
+
+/* Primary Image - Left side, full height */
+.primary-image {
+  grid-column: 1;
+  grid-row: 1 / 3;  /* Spans both rows */
+  position: relative;
+  border-radius: 8px;  /* Match media-box border radius */
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Top-Right: Smartwatch (half height) */
+.top-right-image {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  border-radius: 8px;  /* Match media-box border radius */
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Bottom-Right Section: Nested grid for tablet + phone */
+.bottom-right-section {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;  /* Tablet slightly wider than phone */
+  gap: 10px;  /* Match media-box gap */
+}
+
+/* Bottom-Left of Right Section: Tablet */
+.bottom-left-image {
+  position: relative;
+  border-radius: 8px;  /* Match media-box border radius */
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Bottom-Right of Right Section: Phone */
+.bottom-right-image {
+  position: relative;
+  border-radius: 8px;  /* Match media-box border radius */
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Image Box Styling */
+.image-box {
+  position: relative;
+  border-radius: 8px;  /* Match media-box border radius */
+  background: #E3E7EC;  /* Placeholder background */
+  overflow: hidden;
+}
+
+.image-box img,
+.image-box video,
+.primary-image img,
+.top-right-image img,
+.bottom-left-image img,
+.bottom-right-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Maintains aspect ratio while filling */
+  display: block;
 }
 
 
@@ -243,5 +329,38 @@ a:hover {
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  /* Collage grid mobile responsive */
+  .collage-grid {
+    grid-template-columns: 1fr;  /* Single column on mobile */
+    grid-template-rows: auto;
+    gap: 10px;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .primary-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 350px;  /* Primary image gets more height */
+  }
+
+  .top-right-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 250px;
+  }
+
+  .bottom-right-section {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: 1fr;  /* Stack tablet and phone vertically on mobile */
+    gap: 10px;
+  }
+
+  .bottom-left-image,
+  .bottom-right-image {
+    min-height: 250px;
   }
 }

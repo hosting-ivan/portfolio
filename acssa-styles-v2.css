@@ -1,0 +1,495 @@
+/* ---------------------------------
+   Material Design 3 - CSS Variables
+----------------------------------- */
+:root {
+  /* GMD3 Typography Scale for project pages */
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-large-line-height: 24px;
+  --md-sys-typescale-body-large-weight: 400;
+
+  /* GMD3 Spacing (4dp base) */
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-5: 20px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+
+  /* GMD3 Border Radius */
+  --md-sys-shape-corner-medium: 12px;
+
+  /* Custom spacing */
+  --spacing-gap-large: 50px;
+}
+
+/* ---------------------------------
+   Reset Body & HTML
+----------------------------------- */
+html, body {
+  background: white;
+  background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: "Work Sans", sans-serif;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+.parent {
+  display: grid;
+  grid-template-columns: 35% 65%;  /* wider left column for better text readability */
+  gap: var(--spacing-gap-large);
+  padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------
+   Div1 & Div2
+----------------------------------- */
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  overflow: visible;
+  padding: var(--md-sys-spacing-5);
+}
+
+.div1 p {
+  max-width: 65ch;  /* Optimal line length: ~65 characters for readability */
+  line-height: 1.6;
+}
+
+.div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: var(--md-sys-spacing-5);
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------
+   Four-Image Collage Layout
+   Left: Primary image (full height)
+   Right: Three supporting images
+----------------------------------- */
+.collage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Two equal halves */
+  grid-template-rows: 1fr 1fr;     /* Two rows */
+  gap: 10px;
+  padding: 5px;
+  max-width: 100%;
+  aspect-ratio: 16 / 6;  /* Horizontal proportion with more height */
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+/* Primary Image - Left side, full height */
+.primary-image {
+  grid-column: 1;
+  grid-row: 1 / 3;  /* Spans both rows */
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Top-Right: Smartwatch (half height) */
+.top-right-image {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Bottom-Right Section: Nested grid for tablet + phone */
+.bottom-right-section {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;  /* Tablet slightly wider than phone */
+  gap: 10px;
+}
+
+/* Bottom-Left of Right Section: Tablet */
+.bottom-left-image {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Bottom-Right of Right Section: Phone */
+.bottom-right-image {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Collage images fill their containers */
+.primary-image img,
+.top-right-image img,
+.bottom-left-image img,
+.bottom-right-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------------------------------
+   Image & Video Grid (inside .div2)
+   Grid: multiple columns, fixed row units
+----------------------------------- */
+.image-grid {
+  --gap: 10px;
+  --row: 60px;                 /* base row height - optimized for 16:9 videos */
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);  /* 9 columns for flexible layout */
+  grid-auto-rows: var(--row);  /* key: fixed row unit */
+  grid-auto-flow: dense;
+  gap: var(--gap);
+  padding: 5px;
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+/* ---------------------------------
+   Media Box Placeholders
+   Generic tile shell
+----------------------------------- */
+.media-box {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+/* Make tiles keep their height even when empty (important for placeholders) */
+.media-box::before {
+  content: "";
+  display: block;
+  height: 100%;
+}
+
+/* Video and Image styling within media boxes */
+.media-box video,
+.media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Column-span sizes (controls horizontal width) */
+.media-box.tall {
+  grid-column: span 2;  /* tall takes 2 columns out of 9 */
+  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
+}
+
+.media-box.wide {
+  grid-column: span 7;  /* wide takes 7 columns out of 9 */
+  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
+}
+
+.media-box.full {
+  grid-column: 1 / -1;  /* spans all 9 columns */
+  grid-row: span 6;     /* takes 6 rows in height (standard viewports) */
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+p {
+  margin: 0;
+}
+
+a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+/* ---------------------------------
+   GMD3 Responsive Breakpoints
+----------------------------------- */
+
+/* Large & Extra-Large (Wide Desktop): 1240px+ */
+@media (min-width: 1240px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-8);
+  }
+}
+
+/* Expanded (Desktop): 905px - 1239px */
+@media (min-width: 905px) and (max-width: 1239px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-6);
+  }
+}
+
+/* Ultra-wide viewports (>= 1920px) */
+@media (min-width: 1920px) {
+  .media-box.tall {
+    grid-row: span 7;  /* takes 7 rows in height for ultra-wide */
+  }
+
+  .media-box.wide {
+    grid-row: span 7;  /* takes 7 rows in height for ultra-wide */
+  }
+
+  .media-box.full {
+    grid-row: span 8;  /* takes 8 rows in height for ultra-wide */
+  }
+
+  .collage-grid {
+    aspect-ratio: 16 / 6;  /* Consistent horizontal proportion on ultrawide */
+  }
+
+  /* Video contain class - shows full video without cropping on ultrawide */
+  .media-box.video-contain video {
+    object-fit: contain;  /* Shows entire video, adds letterboxing if needed */
+  }
+}
+
+/* Medium (Tablet): 600px - 904px */
+@media (min-width: 600px) and (max-width: 904px) {
+  .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    overflow: visible;
+    padding: var(--md-sys-spacing-6);
+    margin-bottom: var(--md-sys-spacing-6);
+  }
+
+  .div1 p {
+    max-width: 100%;
+  }
+
+  /* Collage grid tablet responsive */
+  .collage-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* Media boxes adjust for tablet */
+  .image-grid {
+    grid-template-columns: repeat(6, 1fr);  /* 6 columns on tablet */
+    --row: 54px;  /* Row height on tablet */
+  }
+
+  .media-box.tall {
+    grid-column: span 2;
+    grid-row: span 4;
+  }
+
+  .media-box.wide {
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+
+  .media-box.full {
+    grid-column: 1 / -1;
+    grid-row: span 5;
+  }
+}
+
+/* Compact (Mobile): 0 - 599px */
+@media (max-width: 599px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  }
+
+  .div1,
+  .div2 {
+    grid-area: auto;
+    overflow: visible;
+    padding: var(--md-sys-spacing-5);
+    margin-bottom: var(--md-sys-spacing-5);
+  }
+
+  .div1 p {
+    max-width: 100%;
+  }
+
+  /* Collage grid mobile responsive */
+  .collage-grid {
+    grid-template-columns: 1fr;  /* Single column on mobile */
+    grid-template-rows: auto;
+    gap: 10px;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .primary-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 350px;  /* Primary image gets more height */
+  }
+
+  .top-right-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 250px;
+  }
+
+  .bottom-right-section {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: 1fr;  /* Stack tablet and phone vertically on mobile */
+    gap: 10px;
+  }
+
+  .bottom-left-image,
+  .bottom-right-image {
+    min-height: 250px;
+  }
+
+  /* Single-column images/videos on mobile */
+  .image-grid {
+    display: block;
+    padding: 0;
+  }
+
+  /* All media boxes collapse to single column on mobile */
+  .media-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .media-box::before {
+    display: none;
+  }
+
+  .media-box.tall,
+  .media-box.wide,
+  .media-box.full {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Reset absolute positioning for mobile */
+  .media-box video,
+  .media-box img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+/* ---------------------------------
+   Lightbox Modal
+----------------------------------- */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.lightbox-close:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5);
+}
+
+/* Make images and videos clickable */
+.media-box img,
+.media-box video,
+.collage-grid img,
+.primary-image img,
+.top-right-image img,
+.bottom-left-image img,
+.bottom-right-image img {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.media-box img:hover,
+.media-box video:hover,
+.collage-grid img:hover {
+  opacity: 0.9;
+}
