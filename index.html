@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ivan Chen is a designer from San Francisco passionate about shaping a more sustainable future through thoughtful design. View portfolio of brand, UX, and web experimental projects." />
 
 
     <script language=javascript>
@@ -48,6 +49,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="index-style.css" />
 
@@ -56,69 +60,78 @@
   </head>
 
   <body>
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <div class="parent">
-      <div class="div1">
-        <p>
-          <b>WORK</b>    <br />    <br />
-        <span class="subheader">BRAND</span>
-        <br />
-          <a href="carbon.html">Carbon Inc</a> <br />
-          <a href="cve.html">Common Vulnerabilities and Exposures</a>  <br/>
-        <a href="form.html">Form Energy</a> <br /><br />
+      <nav class="div1" aria-label="Portfolio navigation" role="navigation">
+        <h1>WORK</h1>
 
-<span class="subheader">USER EXPERIENCE</span><br />
-<a href="waygo-a.html">Waygo</a> <br/>
-       <a href="acssa.html">Alameda County Social Services Portal</a> <br/>
-       <a href="streetalk.html">StreeTalk: Public Installation in Palo Alto</a> <br/>
-<a href="fernweh.html">Fernweh</a><br />
- 
+        <section aria-labelledby="brand-heading">
+          <h2 id="brand-heading" class="subheader">BRAND</h2>
+          <ul>
+            <li><a href="carbon.html">Carbon Inc</a></li>
+            <li><a href="cve.html">Common Vulnerabilities and Exposures</a></li>
+            <li><a href="form.html">Form Energy</a></li>
+          </ul>
+        </section>
 
+        <section aria-labelledby="ux-heading">
+          <h2 id="ux-heading" class="subheader">USER EXPERIENCE</h2>
+          <ul>
+            <li><a href="waygo-a.html">Waygo</a></li>
+            <li><a href="acssa.html">Alameda County Social Services Portal</a></li>
+            <li><a href="streetalk.html">StreeTalk: Public Installation in Palo Alto</a></li>
+            <li><a href="fernweh.html">Fernweh</a></li>
+          </ul>
+        </section>
 
-<br />
-        <span class="subheader">WEB EXPERIMENTAL</span><br />
-            <a href="noguchi.html">Noguchi's Playscapes for SFMOMA</a> <br />
-                    <a href="watching.html">Watching: Designing for Surveillance</a> <br />
-          <a href="https://hosting-ivn.github.io/tiiime/">Tiiime: Typographic Clock</a> <br />
-        <a href="super.html">SuperSuper: Modular Generated Typeface</a> <br />
+        <section aria-labelledby="web-heading">
+          <h2 id="web-heading" class="subheader">WEB EXPERIMENTAL</h2>
+          <ul>
+            <li><a href="noguchi.html">Noguchi's Playscapes for SFMOMA</a></li>
+            <li><a href="watching.html">Watching: Designing for Surveillance</a></li>
+            <li><a href="https://hosting-ivn.github.io/tiiime/" target="_blank" rel="noopener noreferrer">Tiiime: Typographic Clock<span class="visually-hidden"> (opens in new tab)</span></a></li>
+            <li><a href="super.html">SuperSuper: Modular Generated Typeface</a></li>
+            <li><a href="cryptography.html">Cryptography 001 Publication</a></li>
+          </ul>
+        </section>
 
+        <section aria-labelledby="other-heading">
+          <h2 id="other-heading" class="subheader">OTHER</h2>
+          <ul>
+            <li><a href="renders.html">Various 3D renderings / animations</a></li>
+          </ul>
+        </section>
+      </nav>
 
-          <a href="cryptography.html">Cryptography 001 Publication</a> <br /><br />
-          <span class="subheader">OTHER</span><br />
-          <a href="renders.html">Various 3D renderings / animations</a> <br />
-            </div>
-      <div class="div2">
-        <p>
-          <b>INFO</b>
-            <br />
+      <main class="div2" id="main-content" role="main">
+        <section aria-labelledby="info-heading">
+          <h1 id="info-heading">INFO</h1>
 
-          <br />Please leave a message below.
-          <br />
-          <a href="mailto:contactivanchen@gmail.com">contactivanchen@gmail.com</a>  <br />
+          <p>Please leave a message below.<br />
+          <a href="mailto:contactivanchen@gmail.com">contactivanchen@gmail.com</a></p>
 
-          <a href="Ivan Chen - Resume - 01.17.2025.pdf">Resume</a>
-        </p>
+          <p><a href="Ivan Chen - Resume - 01.17.2025.pdf" aria-label="Download Ivan Chen's resume PDF">Resume</a></p>
+        </section>
 
+        <section aria-label="About Ivan Chen">
+          <p>Hi! I'm Ivan, a designer from San Francisco passionate about shaping a more sustainable future through thoughtful design.</p>
 
-        <br>
-          <p>Hi! I'm Ivan, a designer from San Francisco passionate about shaping a more sustainable future through thoughtful design.
-  <br>
-  <br>
-  Additionally, I explore how automation and algorithms influence communication and aesthetics through graphic and software design.
+          <p>Additionally, I explore how automation and algorithms influence communication and aesthetics through graphic and software design.</p>
 
-  <br>
-  <br>
-  Previously, I have worked with Carbon, Form Energy, M-A-D and collaborated on projects involving partners such as adidas, CCM, Ford, the city of Palo Alto, and Specialized.
-  <br>
-  <br>
-  When I’m not designing, you can find me hanging out with my Maltese, Sophie, and exploring fashion design.
+          <p>Previously, I have worked with Carbon, Form Energy, M-A-D and collaborated on projects involving partners such as adidas, CCM, Ford, the city of Palo Alto, and Specialized.</p>
 
-  </p>
-      </div>
+          <p>When I'm not designing, you can find me hanging out with my Maltese, Sophie, and exploring fashion design.</p>
+        </section>
+      </main>
     </div>
 
+    <!-- Theme Switcher Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <span class="material-symbols-outlined theme-icon">gradient</span>
+    </button>
 
-        </div>
-      </div>
-    </div>
+    <script src="theme-switcher.js"></script>
   </body>
 </html>

@@ -2,21 +2,17 @@
    Material Design 3 - CSS Variables
 ----------------------------------- */
 :root {
-  /* GMD3 Typography Scale for project pages */
   --md-sys-typescale-body-large-size: 16px;
   --md-sys-typescale-body-large-line-height: 24px;
   --md-sys-typescale-body-large-weight: 400;
 
-  /* GMD3 Spacing (4dp base) */
   --md-sys-spacing-4: 16px;
   --md-sys-spacing-5: 20px;
   --md-sys-spacing-6: 24px;
   --md-sys-spacing-8: 32px;
 
-  /* GMD3 Border Radius */
   --md-sys-shape-corner-medium: 12px;
 
-  /* Custom spacing */
   --spacing-gap-large: 50px;
 }
 
@@ -48,7 +44,7 @@ html, body {
 ----------------------------------- */
 .parent {
   display: grid;
-  grid-template-columns: 35% 65%;  /* wider left column for better text readability */
+  grid-template-columns: 35% 65%;
   gap: var(--spacing-gap-large);
   padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
   max-width: 1600px;
@@ -65,7 +61,7 @@ html, body {
 }
 
 .div1 p {
-  max-width: 65ch;  /* Optimal line length: ~65 characters for readability */
+  max-width: 65ch;
   line-height: 1.6;
 }
 
@@ -77,31 +73,27 @@ html, body {
 
 /* ---------------------------------
    Four-Image Collage Layout
-   Left: Primary image (full height)
-   Right: Three supporting images
 ----------------------------------- */
 .collage-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two equal halves */
-  grid-template-rows: 1fr 1fr;     /* Two rows */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 10px;
   padding: 5px;
   max-width: 100%;
-  aspect-ratio: 16 / 6;  /* Horizontal proportion with more height */
+  aspect-ratio: 16 / 6;
   margin-bottom: var(--md-sys-spacing-4);
 }
 
-/* Primary Image - Left side, full height */
 .primary-image {
   grid-column: 1;
-  grid-row: 1 / 3;  /* Spans both rows */
+  grid-row: 1 / 3;
   position: relative;
   border-radius: var(--md-sys-shape-corner-medium);
   background: #E3E7EC;
   overflow: hidden;
 }
 
-/* Top-Right: Smartwatch (half height) */
 .top-right-image {
   grid-column: 2;
   grid-row: 1;
@@ -111,16 +103,14 @@ html, body {
   overflow: hidden;
 }
 
-/* Bottom-Right Section: Nested grid for tablet + phone */
 .bottom-right-section {
   grid-column: 2;
   grid-row: 2;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;  /* Tablet slightly wider than phone */
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 10px;
 }
 
-/* Bottom-Left of Right Section: Tablet */
 .bottom-left-image {
   position: relative;
   border-radius: var(--md-sys-shape-corner-medium);
@@ -128,7 +118,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Bottom-Right of Right Section: Phone */
 .bottom-right-image {
   position: relative;
   border-radius: var(--md-sys-shape-corner-medium);
@@ -136,7 +125,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Collage images fill their containers */
 .primary-image img,
 .top-right-image img,
 .bottom-left-image img,
@@ -148,15 +136,14 @@ html, body {
 }
 
 /* ---------------------------------
-   Image & Video Grid (inside .div2)
-   Grid: multiple columns, fixed row units
+   Image & Video Grid
 ----------------------------------- */
 .image-grid {
   --gap: 10px;
-  --row: 60px;                 /* base row height - optimized for 16:9 videos */
+  --row: 60px;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);  /* 9 columns for flexible layout */
-  grid-auto-rows: var(--row);  /* key: fixed row unit */
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: var(--row);
   grid-auto-flow: dense;
   gap: var(--gap);
   padding: 5px;
@@ -165,7 +152,6 @@ html, body {
 
 /* ---------------------------------
    Media Box Placeholders
-   Generic tile shell
 ----------------------------------- */
 .media-box {
   position: relative;
@@ -174,14 +160,12 @@ html, body {
   overflow: hidden;
 }
 
-/* Make tiles keep their height even when empty (important for placeholders) */
 .media-box::before {
   content: "";
   display: block;
   height: 100%;
 }
 
-/* Video and Image styling within media boxes */
 .media-box video,
 .media-box img {
   width: 100%;
@@ -193,20 +177,19 @@ html, body {
   left: 0;
 }
 
-/* Column-span sizes (controls horizontal width) */
 .media-box.tall {
-  grid-column: span 2;  /* tall takes 2 columns out of 9 */
-  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
+  grid-column: span 2;
+  grid-row: span 5;
 }
 
 .media-box.wide {
-  grid-column: span 7;  /* wide takes 7 columns out of 9 */
-  grid-row: span 5;     /* takes 5 rows in height (standard viewports) */
+  grid-column: span 7;
+  grid-row: span 5;
 }
 
 .media-box.full {
-  grid-column: 1 / -1;  /* spans all 9 columns */
-  grid-row: span 6;     /* takes 6 rows in height (standard viewports) */
+  grid-column: 1 / -1;
+  grid-row: span 6;
 }
 
 /* ---------------------------------
@@ -263,24 +246,23 @@ a:hover {
 /* Ultra-wide viewports (>= 1920px) */
 @media (min-width: 1920px) {
   .media-box.tall {
-    grid-row: span 7;  /* takes 7 rows in height for ultra-wide */
+    grid-row: span 7;
   }
 
   .media-box.wide {
-    grid-row: span 7;  /* takes 7 rows in height for ultra-wide */
+    grid-row: span 7;
   }
 
   .media-box.full {
-    grid-row: span 8;  /* takes 8 rows in height for ultra-wide */
+    grid-row: span 8;
   }
 
   .collage-grid {
-    aspect-ratio: 16 / 6;  /* Consistent horizontal proportion on ultrawide */
+    aspect-ratio: 16 / 6;
   }
 
-  /* Video contain class - shows full video without cropping on ultrawide */
   .media-box.video-contain video {
-    object-fit: contain;  /* Shows entire video, adds letterboxing if needed */
+    object-fit: contain;
   }
 }
 
@@ -302,16 +284,14 @@ a:hover {
     max-width: 100%;
   }
 
-  /* Collage grid tablet responsive */
   .collage-grid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
 
-  /* Media boxes adjust for tablet */
   .image-grid {
-    grid-template-columns: repeat(6, 1fr);  /* 6 columns on tablet */
-    --row: 54px;  /* Row height on tablet */
+    grid-template-columns: repeat(6, 1fr);
+    --row: 54px;
   }
 
   .media-box.tall {
@@ -354,9 +334,8 @@ a:hover {
     max-width: 100%;
   }
 
-  /* Collage grid mobile responsive */
   .collage-grid {
-    grid-template-columns: 1fr;  /* Single column on mobile */
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 10px;
     padding: 0;
@@ -366,7 +345,7 @@ a:hover {
   .primary-image {
     grid-column: 1;
     grid-row: auto;
-    min-height: 350px;  /* Primary image gets more height */
+    min-height: 350px;
   }
 
   .top-right-image {
@@ -378,7 +357,7 @@ a:hover {
   .bottom-right-section {
     grid-column: 1;
     grid-row: auto;
-    grid-template-columns: 1fr;  /* Stack tablet and phone vertically on mobile */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
@@ -387,13 +366,11 @@ a:hover {
     min-height: 250px;
   }
 
-  /* Single-column images/videos on mobile */
   .image-grid {
     display: block;
     padding: 0;
   }
 
-  /* All media boxes collapse to single column on mobile */
   .media-box {
     position: relative;
     width: 100%;
@@ -415,7 +392,6 @@ a:hover {
     aspect-ratio: 16 / 9;
   }
 
-  /* Reset absolute positioning for mobile */
   .media-box video,
   .media-box img {
     position: static;
@@ -467,16 +443,22 @@ a:hover {
   z-index: 10000;
   transition: color 0.3s ease;
   user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
 }
 
-.lightbox-close:hover {
+.lightbox-close:hover,
+.lightbox-close:focus {
   color: #FF7F00;
   text-shadow:
     0 0 10px rgba(255, 127, 0, 0.8),
     0 0 20px rgba(255, 127, 0, 0.5);
+  outline: 3px solid #FF7F00;
+  outline-offset: 4px;
 }
 
-/* Make images and videos clickable */
 .media-box img,
 .media-box video,
 .collage-grid img,
@@ -486,10 +468,112 @@ a:hover {
 .bottom-right-image img {
   cursor: zoom-in;
   transition: opacity 0.2s ease;
+  pointer-events: auto;
 }
 
 .media-box img:hover,
 .media-box video:hover,
 .collage-grid img:hover {
   opacity: 0.9;
+}
+
+/* ---------------------------------
+   Theme Switcher Button
+----------------------------------- */
+.theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.02),
+    0 6px 16px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.3s ease, opacity 0.3s ease;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+.theme-icon {
+  font-size: 24px;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) translateZ(0);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.theme-toggle:hover .theme-icon {
+  color: #FF7F00;
+}
+
+.theme-toggle:focus {
+  outline: 3px solid #FF7F00;
+  outline-offset: 2px;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95) translateZ(0);
+}
+
+/* ---------------------------------
+   Theme Variations
+----------------------------------- */
+
+body.theme-animated {
+  background: white !important;
+}
+
+body.theme-light {
+  background: white !important;
+}
+
+body.theme-dark {
+  background: #0a0a0a !important;
+  color: #f5f5f5;
+}
+
+body.theme-dark a {
+  color: #f5f5f5;
+}
+
+body.theme-dark a:hover {
+  color: #FF7F00;
+}
+
+body.theme-dark .theme-toggle {
+  background: rgba(20, 20, 20, 0.6);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 2px 6px rgba(255, 255, 255, 0.02),
+    0 6px 16px rgba(255, 255, 255, 0.03),
+    0 12px 32px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .theme-icon {
+  color: #f5f5f5;
+}
+
+body.theme-dark .theme-toggle:hover .theme-icon {
+  color: #FF7F00;
 }
