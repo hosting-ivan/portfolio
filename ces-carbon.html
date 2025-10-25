@@ -71,10 +71,21 @@
       </div>
       <!-- Add more images as needed -->
     </div>
-    <!-- Theme Switcher Button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <span class="material-symbols-outlined theme-icon">gradient</span>
-    </button>
+    <!-- Theme Controls -->
+    <div class="theme-controls">
+      <!-- Light/Dark Slider -->
+      <div class="theme-slider" role="radiogroup" aria-label="Theme mode">
+        <button class="slider-button" data-theme="light" aria-label="Light mode">
+          <span class="material-symbols-outlined">sunny</span>
+        </button>
+        <div class="slider-track">
+          <div class="slider-thumb"></div>
+        </div>
+        <button class="slider-button" data-theme="dark" aria-label="Dark mode">
+          <span class="material-symbols-outlined">bedtime</span>
+        </button>
+      </div>
+    </div>
 
     <script src="theme-switcher.js"></script>
     <script src="lightbox.js"></script>

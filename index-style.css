@@ -532,17 +532,23 @@ button:focus {
 }
 
 /* ---------------------------------
-   Theme Switcher Button
+   Theme Controls
 ----------------------------------- */
-.theme-toggle {
+.theme-controls {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-toggle {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-
-
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(20px) saturate(120%);
   -webkit-backdrop-filter: blur(20px) saturate(120%);
@@ -552,24 +558,21 @@ button:focus {
     0 6px 16px rgba(0, 0, 0, 0.03),
     0 12px 32px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
-
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  transition: all 0.3s ease, opacity 0.3s ease;
+  transition: all 0.3s ease;
   transform: translateZ(0);
-  will-change: transform, opacity;
 }
 
-.theme-icon {
+.gradient-toggle span {
   font-size: 24px;
   color: #1a1a1a;
   transition: color 0.3s ease;
 }
 
-.theme-toggle:hover {
+.gradient-toggle:hover {
   transform: scale(1.1) translateZ(0);
   box-shadow:
     0 4px 8px rgba(0, 0, 0, 0.04),
@@ -578,30 +581,124 @@ button:focus {
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-.theme-toggle:hover .theme-icon {
+.gradient-toggle:hover span {
   color: #FF7F00;
 }
 
-.theme-toggle:focus {
+.gradient-toggle:focus {
   outline: 3px solid #FF7F00;
   outline-offset: 2px;
 }
 
-.theme-toggle:active {
+.gradient-toggle:active {
   transform: scale(0.95) translateZ(0);
+}
+
+.gradient-toggle.active {
+  background: rgba(255, 127, 0, 0.2);
+  border-color: rgba(255, 127, 0, 0.5);
+}
+
+.theme-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.02),
+    0 6px 16px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.slider-button span {
+  font-size: 20px;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+  opacity: 0.5;
+}
+
+.slider-button.active span {
+  opacity: 1;
+  color: #FF7F00;
+}
+
+.slider-button:hover span {
+  opacity: 1;
+}
+
+.slider-button:focus {
+  outline: 2px solid #FF7F00;
+  outline-offset: 2px;
+}
+
+.slider-track {
+  width: 48px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  user-select: none;
+}
+
+.slider-thumb:active {
+  cursor: grabbing;
+}
+
+.slider-thumb.dragging {
+  transition: none;
+}
+
+.slider-thumb.dark {
+  left: 26px;
 }
 
 /* ---------------------------------
    Theme Variations
 ----------------------------------- */
 
-/* Light Theme - Plain White */
+body.gradient-off {
+  animation: none !important;
+}
+
 body.theme-light {
   background: white !important;
   animation: none !important;
 }
 
-/* Dark Theme - Black Background */
 body.theme-dark {
   background: #0a0a0a !important;
   animation: none !important;
@@ -623,7 +720,8 @@ body.theme-dark .div3 {
   border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
-body.theme-dark .theme-toggle {
+body.theme-dark .gradient-toggle,
+body.theme-dark .theme-slider {
   background: rgba(20, 20, 20, 0.6);
   border: 0.5px solid rgba(255, 255, 255, 0.2);
   box-shadow:
@@ -633,11 +731,12 @@ body.theme-dark .theme-toggle {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-body.theme-dark .theme-icon {
+body.theme-dark .gradient-toggle span,
+body.theme-dark .slider-button span {
   color: #f5f5f5;
 }
 
-body.theme-dark .theme-toggle:hover .theme-icon {
+body.theme-dark .slider-button.active span {
   color: #FF7F00;
 }
 
