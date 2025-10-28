@@ -50,6 +50,25 @@
 
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
+
+    <style>
+      .jump-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .jump-link {
+        text-decoration: underline;
+        color: inherit;
+        transition: opacity 0.2s ease;
+      }
+
+      .jump-link:hover {
+        opacity: 0.7;
+      }
+    </style>
   </head>
 
   <body>
@@ -58,17 +77,26 @@
         <a href="index.html">Back</a>  <br />
         <b>ACSSA Self-Service Portal Bridge</b>
         <br />
-        User experience <br />
+        User Experience <br />
         <br />
 
         <a href="https://hosting-ivan.github.io/acssa-portal/">Website Demo</a> <br /> <br />
 
+        <h3>The Brief</h3>
         <p>
-         This project connects ACSSA’s printed outreach materials with its online self-service portal. The goal is to help residents quickly understand what support is available and take the next step, whether that’s checking eligibility, applying for help, or finding local services.<br><br>
-       Many people who need help aren’t sure where to start. They often feel overwhelmed by government terms or think applying will take too long. The infographic is designed to make that first step easier. It gives a clear overview of what ACSSA offers and points directly to the online portal through a QR code and short link.
+         This project connects ACSSA's printed outreach materials with its online self-service portal. The goal is to help residents quickly understand what support is available and take the next step, whether that's checking eligibility, applying for help, or finding local services.
+        </p>
+        <br>
+        <p>
+       Many people who need help aren't sure where to start. They often feel overwhelmed by government terms or think applying will take too long. The printed outreach material was redesigned to match ACSSA's voice and brand, making that first step easier. It gives a clear overview of what ACSSA offers and points directly to the online portal through a QR code and short link.
       <br><br>
       The project moves ACSSA from general awareness to guided action. It makes applying for help feel possible and approachable. By aligning the printed and digital experience, the design builds familiarity, trust, and measurable results from first glance to final outcome.
       </p>
+
+        <div class="jump-links">
+          <a href="#the-problem" class="jump-link">» The Problem</a>
+          <a href="#the-solution" class="jump-link">» The Solution</a>
+        </div>
          
 
 
@@ -134,6 +162,46 @@
           </div>
           <div class="media-box tall">
             <img src="assets/acssa/3-2.jpg" alt="">
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <h3>Redesigning ACSSA's Virtual Kiosk</h3>
+          <h4 id="the-problem">The Problem</h4>
+          <p style="margin-bottom: 3rem;">
+            The current Virtual Kiosk has fundamental usability issues. Every section is completely collapsed with no preview of what's inside. Users click blindly through accordions to discover content. There's no visual hierarchy, no grouping of related functions, and no indication of which sections are relevant to their situation. The interface is organized around program names (CalFresh, CalWORKs, Medi-Cal), requiring residents to already understand government terminology. It assumes desktop access and puts the cognitive burden entirely on users to decode the system.
+          </p>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="image-grid">
+          <div class="media-box full">
+            <img src="assets/acssa/comparison.png" alt="Virtual Kiosk comparison">
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <h4 id="the-solution">The Solution</h4>
+          <p>
+            This redesign replaces program codes with life events navigation ("Lost My Job," "Need Food"), removes the guesswork from collapsed accordions, and surfaces common tasks immediately. The mobile-first design uses full-width buttons and vertical layouts built for one-handed phone use. Process transparency shows the complete three-step journey (Answer Questions → Upload Documents → Track Progress) upfront. Quick Actions put frequent tasks like document upload and application tracking front and center. Contextual design rationale cards provide stakeholders with evidence-based reasoning behind each decision without cluttering the interface. The result shifts ACSSA's digital presence from mystery boxes and bureaucratic navigation to clear, human-centered guidance that meets residents where they are.
+          </p>
+        </div>
+
+        <!-- Wireframes Section -->
+        <div class="image-grid" style="margin-top: 3rem;">
+          <!-- Mobile Wireframe -->
+          <div class="media-box full">
+            <img src="assets/acssa/wireframe-mobile.png" alt="Mobile wireframe">
+          </div>
+
+          <!-- Desktop Wireframe -->
+          <div class="media-box full">
+            <img src="assets/acssa/wireframes-desktop.png" alt="Desktop wireframe">
+          </div>
+
+          <!-- Desktop Wireframe 2 -->
+          <div class="media-box full">
+            <img src="assets/acssa/wireframes-desktop2.png" alt="Desktop wireframe 2">
           </div>
         </div>
       </div>
