@@ -326,8 +326,8 @@ a:hover {
   .div2 {
     grid-area: auto;
     overflow: visible;
-    padding: var(--md-sys-spacing-5);
-    margin-bottom: var(--md-sys-spacing-5);
+    padding: var(--md-sys-spacing-4);
+    margin-bottom: var(--md-sys-spacing-4);
   }
 
   .div1 p {
@@ -335,39 +335,37 @@ a:hover {
   }
 
   .collage-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding: 0;
-    min-height: auto;
+    aspect-ratio: auto;
   }
 
   .primary-image {
     grid-column: 1;
     grid-row: auto;
-    min-height: 350px;
+    min-height: 250px;
+    aspect-ratio: 16 / 9;
   }
 
   .top-right-image {
-    grid-column: 1;
-    grid-row: auto;
-    min-height: 250px;
+    display: none;
   }
 
   .bottom-right-section {
-    grid-column: 1;
-    grid-row: auto;
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: none;
   }
 
   .bottom-left-image,
   .bottom-right-image {
-    min-height: 250px;
+    display: none;
   }
 
   .image-grid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: var(--md-sys-spacing-4);
     padding: 0;
   }
 
@@ -375,7 +373,7 @@ a:hover {
     position: relative;
     width: 100%;
     height: auto;
-    margin-bottom: 1em;
+    margin-bottom: 0;
     grid-column: auto;
     grid-row: auto;
   }
@@ -390,13 +388,18 @@ a:hover {
     grid-column: auto;
     grid-row: auto;
     aspect-ratio: 16 / 9;
+    min-height: 200px;
   }
 
   .media-box video,
   .media-box img {
     position: static;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .media-box.video-contain video {
     object-fit: contain;
   }
 }

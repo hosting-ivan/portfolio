@@ -255,8 +255,8 @@ a:hover {
   .div3 {
     grid-area: auto;
     overflow: visible;
-    padding: var(--md-sys-spacing-5);
-    margin-bottom: var(--md-sys-spacing-5);
+    padding: var(--md-sys-spacing-4);
+    margin-bottom: var(--md-sys-spacing-4);
   }
 
   .div1 p {
@@ -266,6 +266,7 @@ a:hover {
   .image-grid,
   .video-grid {
     grid-template-columns: 1fr;
+    gap: var(--md-sys-spacing-4);
   }
 
   .media-box.full,
@@ -276,18 +277,24 @@ a:hover {
   }
 
   .image,
-  .video {
+  .video,
+  .image2,
+  .video2 {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: var(--md-sys-shape-corner-medium);
     display: block;
+    margin-bottom: 0;
   }
 
-  .full-image {
+  .full-image,
+  .full-video,
+  .full-video-contain {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    max-height: none;
+    object-fit: contain;
     border-radius: var(--md-sys-shape-corner-medium);
     display: block;
   }
