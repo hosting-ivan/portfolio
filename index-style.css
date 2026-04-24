@@ -40,16 +40,16 @@
 html, body {
   background: linear-gradient(
     160deg,
-    #f5f7fa 0%,
-    #dce3eb 12%,
-    #b8c4d1 25%,
-    #9dadbc 35%,
-    #b5c3d0 42%,
-    #d4dde6 52%,
-    #a8b8c7 62%,
-    #c5d1dc 72%,
-    #e8eef4 85%,
-    #f8fafb 100%
+    #fdfefe 0%,
+    #f1f4f8 10%,
+    #e2e8ef 20%,
+    #ccd6e0 30%,
+    #e4ebf2 40%,
+    #f4f7fa 50%,
+    #d8e1ea 60%,
+    #eaf0f5 70%,
+    #fafbfd 82%,
+    #ffffff 100%
   );
 
   background-size: 300% 300%;
@@ -70,14 +70,68 @@ html, body {
   color: #1a1a1a;
   text-rendering: optimizeLegibility !important;
   font-feature-settings: "kern";
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 155, 170, 0.45) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 228, 236, 0.9) 0%,
+    rgba(165, 180, 195, 0.85) 50%,
+    rgba(210, 220, 230, 0.9) 100%
+  );
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 245, 250, 0.95) 0%,
+    rgba(180, 195, 210, 0.95) 50%,
+    rgba(230, 238, 245, 0.95) 100%
+  );
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+body.theme-dark {
+  scrollbar-color: rgba(90, 100, 115, 0.55) transparent;
+}
+
+body.theme-dark *::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 130, 145, 0.85) 0%,
+    rgba(70, 80, 95, 0.9) 50%,
+    rgba(110, 120, 135, 0.85) 100%
+  );
+  background-clip: padding-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* ---------------------------------
-   Grid Container – Now 3 Columns
+   Grid Container – 2 Columns
 ----------------------------------- */
 .parent {
   display: grid;
-  grid-template-columns: minmax(min-content, max-content) 1fr 1fr;
+  grid-template-columns: minmax(min-content, max-content) 1fr;
   gap: var(--spacing-gap-large);
   padding: var(--md-sys-spacing-2) var(--md-sys-spacing-2) var(--md-sys-spacing-4);
   align-items: stretch;
@@ -87,12 +141,12 @@ html, body {
    Div1, Div2, Div3
 ----------------------------------- */
 .div1 {
-  grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 3 / 2;
+  align-self: stretch;
   overflow-y: auto;
   overflow-x: hidden;
   padding: var(--md-sys-spacing-3);
   max-height: 85vh;
-
 
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(20px) saturate(120%);
@@ -115,7 +169,7 @@ html, body {
 }
 
 .div2 {
-  grid-area: 1 / 2 / 2 / 3;
+  grid-area: 1 / 2 / 3 / 3;
   padding: var(--md-sys-spacing-3);
   scroll-behavior: smooth;
   overflow-y: auto;
@@ -150,39 +204,51 @@ html, body {
 }
 
 
-.div3 {
-  grid-area: 1 / 3 / 2 / 4;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: var(--md-sys-spacing-3);
-  max-height: 85vh;
-
-
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  border: 0.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: var(--shape-corner-card);
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.02),
-    0 6px 16px rgba(0, 0, 0, 0.03),
-    0 12px 32px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  transform: translateZ(0);
-  will-change: transform;
-}
-
 /* ---------------------------------
    Image & Video Grid (inside .div2)
 ----------------------------------- */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--md-sys-spacing-2);
-  padding: var(--md-sys-spacing-1);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 2em;
+  flex: 1;
+  min-height: 0;
+}
 
-  grid-auto-rows: min-content;
-  align-items: start;
+.div1 .about-section {
+  margin-top: 3em;
+}
+
+.image-grid .grid-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-grid .grid-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.image-grid .grid-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+@media (min-aspect-ratio: 2/1) {
+  .image-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ---------------------------------
@@ -361,14 +427,13 @@ button:focus {
 /* Ultra-wide viewports (>= 1920px) */
 @media (min-width: 1920px) {
   .parent {
-    grid-template-columns: minmax(min-content, max-content) 1fr 1fr;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
     gap: var(--spacing-gap-large);
     padding: var(--md-sys-spacing-2) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
   }
 
   .div1,
-  .div2,
-  .div3 {
+  .div2 {
     padding: var(--md-sys-spacing-5);
   }
 }
@@ -376,14 +441,13 @@ button:focus {
 /* Large & Extra-Large (Wide Desktop): 1240px+ */
 @media (min-width: 1240px) {
   .parent {
-    grid-template-columns: minmax(min-content, max-content) 1fr 1fr;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
     gap: var(--spacing-gap-large);
     padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
   }
 
   .div1,
-  .div2,
-  .div3 {
+  .div2 {
     padding: var(--md-sys-spacing-4);
   }
 }
@@ -391,14 +455,13 @@ button:focus {
 /* Expanded (Desktop): 905px - 1239px */
 @media (min-width: 905px) and (max-width: 1239px) {
   .parent {
-    grid-template-columns: minmax(min-content, max-content) 1fr 1fr;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
     gap: var(--spacing-gap-large);
     padding: var(--md-sys-spacing-2) var(--md-sys-spacing-2) var(--md-sys-spacing-4);
   }
 
   .div1,
-  .div2,
-  .div3 {
+  .div2 {
     padding: var(--md-sys-spacing-3);
   }
 }
@@ -420,12 +483,6 @@ button:focus {
 
   .div2 {
     order: 1;
-    grid-area: auto;
-    padding: var(--md-sys-spacing-3);
-  }
-
-  .div3 {
-    order: 3;
     grid-area: auto;
     padding: var(--md-sys-spacing-3);
   }
@@ -467,13 +524,6 @@ button:focus {
 
   .div2 {
     order: 1;
-    grid-area: auto;
-    overflow: visible;
-    padding: var(--md-sys-spacing-3);
-  }
-
-  .div3 {
-    order: 3;
     grid-area: auto;
     overflow: visible;
     padding: var(--md-sys-spacing-3);
@@ -714,8 +764,7 @@ body.theme-dark a:hover {
 }
 
 body.theme-dark .div1,
-body.theme-dark .div2,
-body.theme-dark .div3 {
+body.theme-dark .div2 {
   background: rgba(20, 20, 20, 0.6);
   border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
@@ -747,8 +796,7 @@ body.theme-dark .skip-link {
 
 /* Light Theme - Plain White */
 body.theme-light .div1,
-body.theme-light .div2,
-body.theme-light .div3 {
+body.theme-light .div2 {
   background: rgba(255, 255, 255, 0.8);
   border: 0.5px solid rgba(0, 0, 0, 0.1);
 }

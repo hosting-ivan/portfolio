@@ -103,11 +103,18 @@
             <li><a href="renders.html">Various 3D renderings / animations</a></li>
           </ul>
         </section>
+
+        <section aria-labelledby="about-heading" class="about-section">
+          <h1 id="about-heading">ABOUT</h1>
+          <div id="about-pretext-container" style="width: 100%; position: relative; font-size: 15px; line-height: 1.5; margin-top: 1em;">
+            <canvas id="about-canvas" style="display: block; width: 100%;"></canvas>
+          </div>
+        </section>
       </nav>
 
-      <main class="div2" id="main-content" role="main">
-        <section aria-labelledby="info-heading">
-          <h1 id="info-heading">INFO</h1>
+      <main class="div2" id="main-content" role="main" style="display: flex; flex-direction: column; height: 100%;">
+        <section aria-labelledby="info-heading" style="flex-shrink: 0;">
+          <h1 id="info-heading">OVERVIEW</h1>
 
           <p>Please leave a message below.<br />
           <a href="mailto:contactivanchen@gmail.com">contactivanchen@gmail.com</a></p>
@@ -115,16 +122,28 @@
           <p><a href="Ivan%20Chen%20-%20Resume%20-%2010.15.2025.pdf" aria-label="Download Ivan Chen's resume PDF">Resume</a></p>
         </section>
 
-        <section aria-label="About Ivan Chen">
-          <p>Hi! I'm Ivan, a designer from San Francisco passionate about shaping a more sustainable future through thoughtful design.</p>
-
-          <p>Additionally, I explore how automation and algorithms influence communication and aesthetics through graphic and software design.</p>
-
-          <p>Previously, I have worked with Carbon, Form Energy, M-A-D and collaborated on projects involving partners such as adidas, CCM, Ford, the city of Palo Alto, and Specialized.</p>
-
-          <p>When I'm not designing, you can find me hanging out with my Maltese, Sophie, and exploring fashion design.</p>
+        <section aria-label="Selected Works Grid" class="image-grid">
+          <a href="carbon.html" class="grid-link" aria-label="Carbon Inc">
+            <video src="assets/carbon/carbon-intro.webm" class="grid-media" autoplay muted loop playsinline></video>
+          </a>
+          <a href="cve.html" class="grid-link" aria-label="Common Vulnerabilities and Exposures">
+            <video src="assets/cve/cve-logo-loops.webm" class="grid-media" autoplay muted loop playsinline></video>
+          </a>
+          <a href="form.html" class="grid-link" aria-label="Form Energy">
+            <video src="assets/form/form-overview.webm" class="grid-media" autoplay muted loop playsinline></video>
+          </a>
+          <a href="streetalk.html" class="grid-link" aria-label="StreeTalk">
+            <img src="assets/streetalk/streetalk_1.gif" alt="StreeTalk" class="grid-media" />
+          </a>
+          <a href="super.html" class="grid-link" aria-label="SuperSuper">
+            <video src="assets/super/panels.webm" class="grid-media" autoplay muted loop playsinline></video>
+          </a>
+          <a href="renders.html" class="grid-link" aria-label="3D Renders">
+            <video src="assets/renders/zendonut.webm" class="grid-media" autoplay muted loop playsinline></video>
+          </a>
         </section>
       </main>
+
     </div>
 
     <!-- Theme Controls -->
@@ -149,5 +168,79 @@
     </div>
 
     <script src="theme-switcher.js"></script>
+    <script type="module">
+      import { prepareWithSegments, layoutWithLines } from 'https://esm.sh/@chenglou/pretext@0.0.5';
+
+      const text = `Hi! I'm Ivan, a designer from San Francisco passionate about shaping a more sustainable future through thoughtful design.
+
+Additionally, I explore how automation and algorithms influence communication and aesthetics through graphic and software design.
+
+Previously, I have worked with Carbon, Form Energy, M-A-D and collaborated on projects involving partners such as adidas, CCM, Ford, the city of Palo Alto, and Specialized.
+
+When I'm not designing, you can find me hanging out with my Maltese, Sophie, and exploring fashion design.`;
+
+      const font = "15px 'Work Sans', sans-serif";
+      const lineHeight = 21;
+
+      const paragraphs = text.split('\n\n');
+      const preparedParagraphs = paragraphs.map(p => prepareWithSegments(p, font));
+
+      function renderPretext() {
+        const container = document.getElementById('about-pretext-container');
+        const canvas = document.getElementById('about-canvas');
+        if (!container || !canvas) return;
+        const ctx = canvas.getContext('2d');
+        
+        const width = container.clientWidth;
+        if (width === 0) {
+          // Retry if container width is not yet calculated
+          requestAnimationFrame(renderPretext);
+          return;
+        }
+        
+        const dpr = window.devicePixelRatio || 1;
+        
+        let y = 0;
+        
+        const layouts = preparedParagraphs.map(prep => {
+          return layoutWithLines(prep, width, lineHeight);
+        });
+        
+        const totalHeight = layouts.reduce((acc, curr) => acc + curr.height + lineHeight, 0);
+        
+        canvas.style.width = width + 'px';
+        canvas.style.height = totalHeight + 'px';
+        canvas.width = width * dpr;
+        canvas.height = totalHeight * dpr;
+        
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, width, totalHeight);
+        ctx.font = font;
+        ctx.textBaseline = 'top';
+        
+        const isDark = document.body.classList.contains('theme-dark');
+        ctx.fillStyle = isDark ? '#f5f5f5' : '#1a1a1a';
+        
+        layouts.forEach(layout => {
+          layout.lines.forEach((line, i) => {
+            ctx.fillText(line.text, 0, y + i * lineHeight);
+          });
+          y += layout.height + lineHeight;
+        });
+      }
+
+      window.addEventListener('resize', renderPretext);
+      // Wait for fonts to load
+      document.fonts.ready.then(renderPretext);
+      
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            renderPretext();
+          }
+        });
+      });
+      observer.observe(document.body, { attributes: true });
+    </script>
   </body>
 </html>
