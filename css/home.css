@@ -1,0 +1,171 @@
+/* ---------------------------------
+   Root & Body Styles
+----------------------------------- */
+html,
+body {
+  /* Gradient background */
+  background: linear-gradient(
+    135deg,
+    /* soft highlight */
+    #f3f4f5 0%,
+    /* subtle cool silver */
+    #dae0e5 25%,
+    /* deeper metallic mid-tone */
+    #b9c2cc 50%,
+    /* a hint of sky-blue reflection */
+    #dfe8ed 75%,
+    /* back to bright highlight */
+    #f3f4f5 100%
+  );
+  );
+
+  background-size: 100% 100%;
+
+  margin: 0;              /* Remove default browser margin */
+  padding: 1.5em;         /* Consistent padding around the page */
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;        /* Base font size for desktop */
+  font-weight: 450;
+  line-height: 1.35;
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+
+  height: 100%;
+  overflow: hidden;       /* Hide overflow for desktop (can adjust if needed) */
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+.parent {
+  display: grid;
+  grid-template-columns: 25% 75%;  /* Two-column layout on desktop */
+  grid-template-rows: auto auto;
+  grid-gap: 50px;                  /* Space between columns & rows */
+  /* No additional padding here because <body> already has padding */
+}
+
+/* ---------------------------------
+   Div1 & Div2 (Grid Areas)
+----------------------------------- */
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  /* Uniform padding inside the container */
+  padding: 1.5em;
+}
+
+.div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  overflow-y: auto;
+  max-height: 100%;
+  max-width: 900px; /* or any width that feels good */
+  padding: 0em;
+  font-size: 1.55em; /* ← Increase this value as needed */
+  line-height: 1.5; /* Optional: makes larger text more readable */
+}
+
+
+
+/* ---------------------------------
+   Image Grid
+----------------------------------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+  padding: 5px;                   /* Small internal padding */
+}
+
+.image {
+  max-width: 100%;
+  max-height: 650px;
+  border-radius: 8px;
+  grid-column: span 2;           /* Spans both columns by default */
+}
+
+.full-image {
+  width: 97%;
+  max-height: 650px;
+  border-radius: 8px;
+  grid-column: span 2;           /* Spans both columns */
+  overflow: hidden;
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+p {
+  margin: 1em;
+}
+
+a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+/* ---------------------------------
+   Standard Viewports (< 1920px)
+----------------------------------- */
+@media (max-width: 1919px) {
+  html, body {
+    font-size: 10px;
+  }
+}
+
+/* ---------------------------------
+   Mobile Layout (<= 768px)
+----------------------------------- */
+@media (max-width: 768px) {
+  html,
+  body {
+    background-color: white;
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  .parent {
+    display: block;
+    padding: 1em;
+  }
+
+  .div1,
+  .div2,
+  .div3 {
+    grid-area: auto;
+    overflow: visible;
+    padding: 1em;
+    margin-bottom: 2em;
+    max-width: 100%;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;      /* Single column for images */
+    padding: 0;                      /* Adjust as needed */
+  }
+
+  .image,
+  .full-image {
+    max-width: 100%;
+    border-radius: 4px;              /* Slightly smaller corner radius */
+    grid-column: span 1;
+  }
+}
