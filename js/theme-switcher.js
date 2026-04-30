@@ -1,10 +1,6 @@
 // Theme Switcher - Light/Dark slider only
 
 (function() {
-  const isHomepage = window.location.pathname === '/' ||
-                     window.location.pathname.endsWith('index.html') ||
-                     document.querySelector('nav.div1') !== null;
-
   const sliderButtons = document.querySelectorAll('.slider-button');
   const sliderTrack = document.querySelector('.slider-track');
   const sliderThumb = document.querySelector('.slider-thumb');
@@ -31,17 +27,12 @@
     }
   }
 
-  // Apply saved theme, or default: animated gradient on homepage, light on project pages
+  // Apply saved theme, or default to light on all pages
   if (currentTheme) {
     applyTheme(currentTheme);
-  } else if (!isHomepage) {
+  } else {
     currentTheme = 'light';
     applyTheme('light');
-  } else {
-    // Homepage default: animated dark gradient — just set slider visual to neutral
-    sliderButtons.forEach(btn => {
-      btn.classList.remove('active');
-    });
   }
 
   // Slider button click
