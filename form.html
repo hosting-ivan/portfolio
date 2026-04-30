@@ -68,26 +68,44 @@ At Form Energy, I contributed to the development and refinement of the brand ide
       </div>
       <div class="div2">
         <div class="image-grid">
-          <img
-              class="image2"
-              src="assets/form/form-factory-1.jpg"
+            <video
+              class="full-video"
+              src="assets/form/form-overview.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+            <video
+              class="full-video"
+              src="assets/form/battery-active.webm"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+            <video
+              class="full-video"
+              src="assets/form/battery-standby.webm"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
 
-            />
-            <img
-              class="image2"
-              src="assets/form/form-alpha-1.jpg"
-              alt="Your Image Description"
-            />
-            <img
-              class="image2"
-              src="assets/form/F2.png"
-              alt="Your Image Description"
-            />
-            <img
-              class="image2"
-              src="assets/form/F1.png"
+            <div class="slideshow">
+              <div class="slideshow-track">
+                <img src="assets/form/form-cell-01.png" class="slide" alt="" />
+                <img src="assets/form/form-factory-02.png" class="slide" alt="" />
+                <img src="assets/form/form-system-03.png" class="slide" alt="" />
+                <div class="slideshow-dots">
+                  <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                  <button class="dot" data-index="1" aria-label="Slide 2"></button>
+                  <button class="dot" data-index="2" aria-label="Slide 3"></button>
+                </div>
+              </div>
+            </div>
 
-            />
             <img
               class="image2"
               src="assets/form/form-factory-museum-1.png"
@@ -166,5 +184,40 @@ At Form Energy, I contributed to the development and refinement of the brand ide
 
     <script src="theme-switcher.js"></script>
     <script src="lightbox.js"></script>
+    <script>
+      (function () {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let current = 0;
+        let timer;
+
+        function goTo(index) {
+          slides[current].classList.remove('active');
+          dots[current].classList.remove('active');
+          current = index;
+          slides[current].classList.add('active');
+          dots[current].classList.add('active');
+        }
+
+        function next() {
+          goTo((current + 1) % slides.length);
+        }
+
+        function startTimer() {
+          timer = setInterval(next, 3500);
+        }
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', function () {
+            clearInterval(timer);
+            goTo(Number(this.dataset.index));
+            startTimer();
+          });
+        });
+
+        slides[0].classList.add('active');
+        startTimer();
+      })();
+    </script>
   </body>
 </html>
