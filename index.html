@@ -104,13 +104,14 @@
           </ul>
         </section>
 
-        <section aria-labelledby="about-heading" class="about-section">
-          <h1 id="about-heading">ABOUT</h1>
-          <div id="about-pretext-container" style="width: 100%; position: relative; font-size: 15px; line-height: 1.5; margin-top: 1em;">
-            <canvas id="about-canvas" style="display: block; width: 100%;"></canvas>
-          </div>
-        </section>
       </nav>
+
+      <aside class="div3" aria-labelledby="about-heading">
+        <h1 id="about-heading">ABOUT</h1>
+        <div id="about-pretext-container" style="width: 100%; position: relative; font-size: 15px; line-height: 1.5; margin-top: 1em;">
+          <canvas id="about-canvas" style="display: block; width: 100%;"></canvas>
+        </div>
+      </aside>
 
       <main class="div2" id="main-content" role="main" style="display: flex; flex-direction: column; height: 100%;">
         <section aria-labelledby="info-heading" style="flex-shrink: 0;">
@@ -135,7 +136,7 @@
           <a href="streetalk.html" class="grid-link" aria-label="StreeTalk">
             <img src="assets/streetalk/streetalk_1.gif" alt="StreeTalk" class="grid-media" />
           </a>
-          <a href="super.html" class="grid-link" aria-label="SuperSuper">
+          <a href="gtp.html" class="grid-link" aria-label="Geometric Translation Protocol">
             <video src="assets/super/panels.webm" class="grid-media" autoplay muted loop playsinline></video>
           </a>
           <a href="renders.html" class="grid-link" aria-label="3D Renders">
@@ -148,11 +149,6 @@
 
     <!-- Theme Controls -->
     <div class="theme-controls">
-      <!-- Gradient Toggle (Homepage only) -->
-      <button id="gradient-toggle" class="gradient-toggle" aria-label="Toggle gradient animation">
-        <span class="material-symbols-outlined">gradient</span>
-      </button>
-
       <!-- Light/Dark Slider -->
       <div class="theme-slider" role="radiogroup" aria-label="Theme mode">
         <button class="slider-button" data-theme="light" aria-label="Light mode">
@@ -218,8 +214,8 @@ When I'm not designing, you can find me hanging out with my Maltese, Sophie, and
         ctx.font = font;
         ctx.textBaseline = 'top';
         
-        const isDark = document.body.classList.contains('theme-dark');
-        ctx.fillStyle = isDark ? '#f5f5f5' : '#1a1a1a';
+        const isLight = document.body.classList.contains('theme-light');
+        ctx.fillStyle = isLight ? '#1a1a1a' : '#f5f5f5';
         
         layouts.forEach(layout => {
           layout.lines.forEach((line, i) => {
