@@ -1,0 +1,1709 @@
+/* ---------------------------------
+   Material Design 3 - CSS Variables
+----------------------------------- */
+:root {
+  --md-sys-typescale-body-large-size: 14px;
+  --md-sys-typescale-body-large-line-height: 21px;
+  --md-sys-typescale-body-large-weight: 450;
+
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-5: 20px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+
+  --md-sys-shape-corner-medium: 12px;
+
+  --spacing-gap-large: 50px;
+}
+
+/* ---------------------------------
+   Reset Body & HTML
+----------------------------------- */
+html, body {
+  background: white;
+  background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: "Work Sans", sans-serif;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 155, 170, 0.45) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 228, 236, 0.9) 0%,
+    rgba(165, 180, 195, 0.85) 50%,
+    rgba(210, 220, 230, 0.9) 100%
+  );
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 245, 250, 0.95) 0%,
+    rgba(180, 195, 210, 0.95) 50%,
+    rgba(230, 238, 245, 0.95) 100%
+  );
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+body.theme-dark {
+  scrollbar-color: rgba(90, 100, 115, 0.55) transparent;
+}
+
+body.theme-dark *::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 130, 145, 0.85) 0%,
+    rgba(70, 80, 95, 0.9) 50%,
+    rgba(110, 120, 135, 0.85) 100%
+  );
+  background-clip: padding-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+.parent {
+  display: grid;
+  grid-template-columns: clamp(420px, 30%, 540px) 1fr;
+  gap: var(--spacing-gap-large);
+  padding: var(--md-sys-spacing-2) var(--md-sys-spacing-2) var(--md-sys-spacing-4);
+  align-items: stretch;
+}
+
+/* ---------------------------------
+   Div1 & Div2
+----------------------------------- */
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: start;
+  padding: var(--md-sys-spacing-5);
+  position: sticky;
+  top: var(--md-sys-spacing-2);
+}
+
+.div1 a {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.div1 p {
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+.div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: var(--md-sys-spacing-5);
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------
+   Image & Video Grid (inside .div2)
+----------------------------------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--md-sys-spacing-4);
+  padding: 0;
+
+  grid-auto-rows: min-content;
+  align-items: start;
+}
+
+@media (min-aspect-ratio: 2/1) {
+  .parent {
+    grid-template-columns: clamp(420px, 28%, 600px) minmax(0, min(65vw, 1300px));
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 16:9 / 16:10 displays: shrink sidebar AND tighten padding so media gets more room */
+@media (min-width: 905px) and (min-aspect-ratio: 16/10) and (max-aspect-ratio: 2/1) {
+  .parent {
+    grid-template-columns: clamp(300px, 18%, 380px) 1fr;
+    gap: var(--md-sys-spacing-6);
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  }
+
+  .div2 {
+    padding: var(--md-sys-spacing-4);
+  }
+}
+
+/* ---------------------------------
+   Media Box Placeholders
+----------------------------------- */
+.media-box {
+  background-color: #007BFF;
+  border-radius: var(--md-sys-shape-corner-medium);
+  width: 100%;
+  display: block;
+}
+
+.media-box.full {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+}
+
+.media-box.tall {
+  aspect-ratio: 3 / 4;
+}
+
+.media-box.wide {
+  aspect-ratio: 4 / 3;
+}
+
+/* ---------------------------------
+   Full-width Media
+----------------------------------- */
+.full-image,
+.full-video,
+video.full-image {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
+}
+/* ---------------------------------
+   Full-width Media (no zoom)
+----------------------------------- */
+.full-video-contain,
+video.full-video-contain {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
+}
+
+/* ---------------------------------
+   Slideshow
+----------------------------------- */
+.slideshow {
+  grid-column: span 2;
+}
+
+.slideshow-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: #1a1a1a;
+}
+
+body.theme-dark .dot {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.theme-dark .dot.active {
+  background: #f5f5f5;
+}
+
+/* ---------------------------------
+   Thumbnails & Videos (Option A)
+----------------------------------- */
+.image,
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+.image2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.video2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  /* Force GPU-accelerated rendering, smoother scaling */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+p {
+  margin: 0;
+}
+
+a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+
+/* ---------------------------------
+   GMD3 Responsive Breakpoints
+----------------------------------- */
+
+/* Large & Extra-Large (Wide Desktop): 1240px+ */
+@media (min-width: 1240px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-8);
+  }
+}
+
+/* Expanded (Desktop): 905px - 1239px */
+@media (min-width: 905px) and (max-width: 1239px) {
+  .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    padding: var(--md-sys-spacing-6);
+  }
+}
+
+/* Medium (Tablet): 600px - 904px */
+@media (min-width: 600px) and (max-width: 904px) {
+  .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  .div1,
+  .div2 {
+    overflow: visible;
+    padding: var(--md-sys-spacing-6);
+    margin-bottom: var(--md-sys-spacing-6);
+  }
+
+  .div1 p {
+    max-width: 100%;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Compact (Mobile): 0 - 599px */
+@media (max-width: 599px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  }
+
+  .div1,
+  .div2,
+  .div3 {
+    grid-area: auto;
+    overflow: visible;
+    padding: var(--md-sys-spacing-4);
+    margin-bottom: var(--md-sys-spacing-4);
+  }
+
+  .div1 p {
+    max-width: 100%;
+  }
+
+  .image-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: var(--md-sys-spacing-4);
+  }
+
+  .media-box.full,
+  .media-box.tall,
+  .media-box.wide {
+    grid-column: span 1;
+    aspect-ratio: 16 / 9;
+  }
+
+  .image,
+  .video,
+  .image2,
+  .video2 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--md-sys-shape-corner-medium);
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .full-image,
+  .full-video,
+  .full-video-contain {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    border-radius: var(--md-sys-shape-corner-medium);
+    display: block;
+  }
+}
+
+/* ---------------------------------
+   Lightbox Modal
+----------------------------------- */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5);
+  outline: 3px solid #FF7F00;
+  outline-offset: 4px;
+}
+
+.image,
+.image2,
+.video,
+.video2,
+.full-image,
+.full-video {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+  pointer-events: auto;
+}
+
+.image:hover,
+.image2:hover,
+.video:hover,
+.video2:hover,
+.full-image:hover,
+.full-video:hover {
+  opacity: 0.9;
+}
+
+/* ---------------------------------
+   Theme Controls
+----------------------------------- */
+.theme-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.theme-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.02),
+    0 6px 16px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.slider-button span {
+  font-size: 20px;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+  opacity: 0.5;
+}
+
+.slider-button.active span {
+  opacity: 1;
+  color: #FF7F00;
+}
+
+.slider-button:hover span {
+  opacity: 1;
+}
+
+.slider-button:focus {
+  outline: 2px solid #FF7F00;
+  outline-offset: 2px;
+}
+
+.slider-track {
+  width: 48px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  user-select: none;
+}
+
+.slider-thumb:active {
+  cursor: grabbing;
+}
+
+.slider-thumb.dragging {
+  transition: none;
+}
+
+.slider-thumb.dark {
+  left: 26px;
+}
+
+/* ---------------------------------
+   Theme Variations
+----------------------------------- */
+
+body.theme-animated {
+  background: white !important;
+}
+
+body.theme-light {
+  background: white !important;
+}
+
+body.theme-dark {
+  background: #0a0a0a !important;
+  color: #f5f5f5;
+}
+
+body.theme-dark a {
+  color: #f5f5f5;
+}
+
+body.theme-dark a:hover {
+  color: #FF7F00;
+}
+
+body.theme-dark .theme-slider {
+  background: rgba(20, 20, 20, 0.6);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 2px 6px rgba(255, 255, 255, 0.02),
+    0 6px 16px rgba(255, 255, 255, 0.03),
+    0 12px 32px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .slider-button span {
+  color: #f5f5f5;
+}
+
+body.theme-dark .slider-button.active span {
+  color: #FF7F00;
+}
+
+
+/* =================================================================
+   PAGE-SPECIFIC OVERRIDES: about.html  (body.page-about)
+   Source: css/style.css — all rules scoped under body.page-about
+   ================================================================= */
+
+/* ---------------------------------
+   Reset Body & HTML
+----------------------------------- */
+body.page-about {
+  /* Gradient background */
+  background: white;
+
+  background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;             /* page scrolls here */
+
+  font-family: "Work Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.35;
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+body.page-about .parent {
+  display: grid;
+  /* no fixed height */
+  grid-template-columns: 25% 75%;  /* two columns side by side */
+  /* grid-template-rows removed */
+  gap: 50px;
+  padding: 1.5em;
+}
+
+/* ---------------------------------
+   Div1 & Div2
+----------------------------------- */
+body.page-about .div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  overflow: hidden;
+  padding: 1.5em;
+}
+
+body.page-about .div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  /* removed inner scrolling so page scrollbar handles it */
+  padding: 1.5em;
+  /* you can still use smooth scrolling on anchors if you like: */
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------
+   Image & Video Grid (inside .div2)
+----------------------------------- */
+body.page-about .image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 5px;
+
+  grid-auto-rows: min-content;
+  align-items: start;
+}
+
+/* ---------------------------------
+   Full-width Media
+----------------------------------- */
+body.page-about .full-image,
+body.page-about .full-video,
+body.page-about video.full-image {
+  grid-column: span 2;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+  align-self: start;
+  justify-self: stretch;
+}
+
+/* ---------------------------------
+   Thumbnails & Videos (Option A)
+----------------------------------- */
+body.page-about .image,
+body.page-about .video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+body.page-about .image2,
+body.page-about .video2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 8px;
+}
+body.page-about .video-link {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;    /* make the rounded corners "cut" the video */
+  cursor: pointer;
+}
+
+body.page-about .video-link .video2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+body.page-about p {
+  margin: 0;
+}
+
+body.page-about a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  transition: all 0.3s ease;
+}
+
+body.page-about a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+
+/* ---------------------------------
+   Standard Viewports (< 1920px)
+----------------------------------- */
+@media (max-width: 1919px) {
+  body.page-about {
+    font-size: 10px;
+  }
+}
+
+/* ---------------------------------
+   Mobile Layout (<= 768px)
+----------------------------------- */
+@media (max-width: 768px) {
+  body.page-about {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 450;
+  }
+
+  body.page-about .parent {
+    display: block;
+    padding: 1.5em;
+  }
+
+  body.page-about .div1,
+  body.page-about .div2,
+  body.page-about .div3 {
+    grid-area: auto;
+    overflow: visible;
+    padding: 1.5em;
+    margin-bottom: 2em;
+  }
+
+  /* Single-column images/videos on mobile */
+  body.page-about .image-grid,
+  body.page-about .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.page-about .image,
+  body.page-about .video {
+    width: 100%;
+    height: auto;       /* Maintain aspect ratio */
+    object-fit: cover;  /* Maintain aspect ratio */
+    border-radius: 8px; /* Add rounded corners */
+    display: block;
+  }
+
+  body.page-about .full-image {
+    width: 100%;
+    height: auto;       /* Maintain aspect ratio on mobile */
+  }
+}
+
+
+/* =================================================================
+   PAGE-SPECIFIC OVERRIDES: alameda-county-port.html  (body.page-alameda)
+   Source: css/home.css — all rules scoped under body.page-alameda
+   Note: syntax bug on original line 20 (stray ");") has been removed.
+   ================================================================= */
+
+/* ---------------------------------
+   Root & Body Styles
+----------------------------------- */
+body.page-alameda {
+  /* Gradient background */
+  background: linear-gradient(
+    135deg,
+    /* soft highlight */
+    #f3f4f5 0%,
+    /* subtle cool silver */
+    #dae0e5 25%,
+    /* deeper metallic mid-tone */
+    #b9c2cc 50%,
+    /* a hint of sky-blue reflection */
+    #dfe8ed 75%,
+    /* back to bright highlight */
+    #f3f4f5 100%
+  );
+
+  background-size: 100% 100%;
+
+  margin: 0;              /* Remove default browser margin */
+  padding: 1.5em;         /* Consistent padding around the page */
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;        /* Base font size for desktop */
+  font-weight: 450;
+  line-height: 1.35;
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+
+  height: 100%;
+  overflow: hidden;       /* Hide overflow for desktop (can adjust if needed) */
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+body.page-alameda .parent {
+  display: grid;
+  grid-template-columns: 25% 75%;  /* Two-column layout on desktop */
+  grid-template-rows: auto auto;
+  grid-gap: 50px;                  /* Space between columns & rows */
+  /* No additional padding here because <body> already has padding */
+}
+
+/* ---------------------------------
+   Div1 & Div2 (Grid Areas)
+----------------------------------- */
+body.page-alameda .div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  /* Uniform padding inside the container */
+  padding: 1.5em;
+}
+
+body.page-alameda .div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  overflow-y: auto;
+  max-height: 100%;
+  max-width: 900px; /* or any width that feels good */
+  padding: 0em;
+  font-size: 1.55em; /* ← Increase this value as needed */
+  line-height: 1.5; /* Optional: makes larger text more readable */
+}
+
+
+
+/* ---------------------------------
+   Image Grid
+----------------------------------- */
+body.page-alameda .image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+  padding: 5px;                   /* Small internal padding */
+}
+
+body.page-alameda .image {
+  max-width: 100%;
+  max-height: 650px;
+  border-radius: 8px;
+  grid-column: span 2;           /* Spans both columns by default */
+}
+
+body.page-alameda .full-image {
+  width: 97%;
+  max-height: 650px;
+  border-radius: 8px;
+  grid-column: span 2;           /* Spans both columns */
+  overflow: hidden;
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+body.page-alameda p {
+  margin: 1em;
+}
+
+body.page-alameda a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  transition: all 0.3s ease;
+}
+
+body.page-alameda a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+/* ---------------------------------
+   Standard Viewports (< 1920px)
+----------------------------------- */
+@media (max-width: 1919px) {
+  body.page-alameda {
+    font-size: 10px;
+  }
+}
+
+/* ---------------------------------
+   Mobile Layout (<= 768px)
+----------------------------------- */
+@media (max-width: 768px) {
+  body.page-alameda {
+    background-color: white;
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  body.page-alameda .parent {
+    display: block;
+    padding: 1em;
+  }
+
+  body.page-alameda .div1,
+  body.page-alameda .div2,
+  body.page-alameda .div3 {
+    grid-area: auto;
+    overflow: visible;
+    padding: 1em;
+    margin-bottom: 2em;
+    max-width: 100%;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  body.page-alameda .image-grid {
+    grid-template-columns: 1fr;      /* Single column for images */
+    padding: 0;                      /* Adjust as needed */
+  }
+
+  body.page-alameda .image,
+  body.page-alameda .full-image {
+    max-width: 100%;
+    border-radius: 4px;              /* Slightly smaller corner radius */
+    grid-column: span 1;
+  }
+}
+
+
+/* =================================================================
+   PAGE-SPECIFIC OVERRIDES: acssa.html  (body.page-acssa)
+   Source: css/acssa-styles-v2.css — all rules scoped under body.page-acssa
+   ================================================================= */
+
+/* ---------------------------------
+   Material Design 3 - CSS Variables (acssa overrides)
+----------------------------------- */
+body.page-acssa {
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-large-line-height: 24px;
+  --md-sys-typescale-body-large-weight: 400;
+
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-5: 20px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+
+  --md-sys-shape-corner-medium: 12px;
+
+  --spacing-gap-large: 50px;
+}
+
+/* ---------------------------------
+   Reset Body & HTML
+----------------------------------- */
+body.page-acssa {
+  background: white;
+  background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: "Work Sans", sans-serif;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  letter-spacing: -0.0125rem;
+  color: #1a1a1a;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern";
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 155, 170, 0.45) transparent;
+}
+
+body.page-acssa.theme-dark {
+  scrollbar-color: rgba(90, 100, 115, 0.55) transparent;
+}
+
+body.page-acssa.theme-dark *::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 130, 145, 0.85) 0%,
+    rgba(70, 80, 95, 0.9) 50%,
+    rgba(110, 120, 135, 0.85) 100%
+  );
+  background-clip: padding-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ---------------------------------
+   Grid Container
+----------------------------------- */
+body.page-acssa .parent {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: var(--spacing-gap-large);
+  padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------
+   Div1 & Div2
+----------------------------------- */
+body.page-acssa .div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  overflow: visible;
+  padding: var(--md-sys-spacing-5);
+}
+
+body.page-acssa .div1 p {
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+body.page-acssa .div2 {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: var(--md-sys-spacing-5);
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------
+   Four-Image Collage Layout
+----------------------------------- */
+body.page-acssa .collage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  padding: 5px;
+  max-width: 100%;
+  aspect-ratio: 16 / 6;
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+body.page-acssa .primary-image {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+body.page-acssa .top-right-image {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+body.page-acssa .bottom-right-section {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 10px;
+}
+
+body.page-acssa .bottom-left-image {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+body.page-acssa .bottom-right-image {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+body.page-acssa .primary-image img,
+body.page-acssa .top-right-image img,
+body.page-acssa .bottom-left-image img,
+body.page-acssa .bottom-right-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------------------------------
+   Image & Video Grid
+----------------------------------- */
+body.page-acssa .image-grid {
+  --gap: 10px;
+  --row: 60px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: var(--row);
+  grid-auto-flow: dense;
+  gap: var(--gap);
+  padding: 5px;
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+/* ---------------------------------
+   Media Box Placeholders
+----------------------------------- */
+body.page-acssa .media-box {
+  position: relative;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: #E3E7EC;
+  overflow: hidden;
+}
+
+body.page-acssa .media-box::before {
+  content: "";
+  display: block;
+  height: 100%;
+}
+
+body.page-acssa .media-box video,
+body.page-acssa .media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+body.page-acssa .media-box video {
+  object-fit: contain;
+}
+
+body.page-acssa .media-box.tall {
+  grid-column: span 2;
+  grid-row: span 5;
+}
+
+body.page-acssa .media-box.wide {
+  grid-column: span 7;
+  grid-row: span 5;
+}
+
+body.page-acssa .media-box.full {
+  grid-column: 1 / -1;
+  grid-row: span 6;
+}
+
+/* ---------------------------------
+   Paragraph & Link Defaults
+----------------------------------- */
+body.page-acssa p {
+  margin: 0;
+}
+
+body.page-acssa a {
+  color: #2d2d2d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.3s ease;
+}
+
+body.page-acssa a:hover {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5),
+    0 0 30px rgba(255, 127, 0, 0.3);
+  text-decoration-color: #FF7F00;
+}
+
+/* ---------------------------------
+   GMD3 Responsive Breakpoints
+----------------------------------- */
+
+/* Large & Extra-Large (Wide Desktop): 1240px+ */
+@media (min-width: 1240px) {
+  body.page-acssa .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
+  }
+
+  body.page-acssa .div1,
+  body.page-acssa .div2 {
+    padding: var(--md-sys-spacing-8);
+  }
+}
+
+/* Expanded (Desktop): 905px - 1239px */
+@media (min-width: 905px) and (max-width: 1239px) {
+  body.page-acssa .parent {
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  body.page-acssa .div1,
+  body.page-acssa .div2 {
+    padding: var(--md-sys-spacing-6);
+  }
+}
+
+/* Ultra-wide viewports (>= 1920px) */
+@media (min-width: 1920px) {
+  body.page-acssa .media-box.tall {
+    grid-row: span 7;
+  }
+
+  body.page-acssa .media-box.wide {
+    grid-row: span 7;
+  }
+
+  body.page-acssa .media-box.full {
+    grid-row: span 8;
+  }
+
+  body.page-acssa .collage-grid {
+    aspect-ratio: 16 / 6;
+  }
+
+  body.page-acssa .media-box.video-contain video {
+    object-fit: contain;
+  }
+}
+
+/* Medium (Tablet): 600px - 904px */
+@media (min-width: 600px) and (max-width: 904px) {
+  body.page-acssa .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6) var(--md-sys-spacing-6);
+  }
+
+  body.page-acssa .div1,
+  body.page-acssa .div2 {
+    overflow: visible;
+    padding: var(--md-sys-spacing-6);
+    margin-bottom: var(--md-sys-spacing-6);
+  }
+
+  body.page-acssa .div1 p {
+    max-width: 100%;
+  }
+
+  body.page-acssa .collage-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  body.page-acssa .image-grid {
+    grid-template-columns: repeat(6, 1fr);
+    --row: 54px;
+  }
+
+  body.page-acssa .media-box.tall {
+    grid-column: span 2;
+    grid-row: span 4;
+  }
+
+  body.page-acssa .media-box.wide {
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+
+  body.page-acssa .media-box.full {
+    grid-column: 1 / -1;
+    grid-row: span 5;
+  }
+}
+
+/* Compact (Mobile): 0 - 599px */
+@media (max-width: 599px) {
+  body.page-acssa {
+    font-size: 14px;
+  }
+
+  body.page-acssa .parent {
+    display: block;
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  }
+
+  body.page-acssa .div1,
+  body.page-acssa .div2 {
+    grid-area: auto;
+    overflow: visible;
+    padding: var(--md-sys-spacing-4);
+    margin-bottom: var(--md-sys-spacing-4);
+  }
+
+  body.page-acssa .div1 p {
+    max-width: 100%;
+  }
+
+  body.page-acssa .collage-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    aspect-ratio: auto;
+  }
+
+  body.page-acssa .primary-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 250px;
+    aspect-ratio: 16 / 9;
+  }
+
+  body.page-acssa .top-right-image {
+    display: none;
+  }
+
+  body.page-acssa .bottom-right-section {
+    display: none;
+  }
+
+  body.page-acssa .bottom-left-image,
+  body.page-acssa .bottom-right-image {
+    display: none;
+  }
+
+  body.page-acssa .image-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--md-sys-spacing-4);
+    padding: 0;
+  }
+
+  body.page-acssa .media-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  body.page-acssa .media-box::before {
+    display: none;
+  }
+
+  body.page-acssa .media-box.tall,
+  body.page-acssa .media-box.wide,
+  body.page-acssa .media-box.full {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+  }
+
+  body.page-acssa .media-box video,
+  body.page-acssa .media-box img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  body.page-acssa .media-box.video-contain video {
+    object-fit: contain;
+  }
+}
+
+/* ---------------------------------
+   Lightbox Modal
+----------------------------------- */
+body.page-acssa .lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+body.page-acssa .lightbox-overlay.active {
+  display: flex;
+}
+
+body.page-acssa .lightbox-content {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+body.page-acssa .lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+body.page-acssa .lightbox-close:hover,
+body.page-acssa .lightbox-close:focus {
+  color: #FF7F00;
+  text-shadow:
+    0 0 10px rgba(255, 127, 0, 0.8),
+    0 0 20px rgba(255, 127, 0, 0.5);
+  outline: 3px solid #FF7F00;
+  outline-offset: 4px;
+}
+
+body.page-acssa .media-box img,
+body.page-acssa .media-box video,
+body.page-acssa .collage-grid img,
+body.page-acssa .primary-image img,
+body.page-acssa .top-right-image img,
+body.page-acssa .bottom-left-image img,
+body.page-acssa .bottom-right-image img {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+  pointer-events: auto;
+}
+
+body.page-acssa .media-box img:hover,
+body.page-acssa .media-box video:hover,
+body.page-acssa .collage-grid img:hover {
+  opacity: 0.9;
+}
+
+/* ---------------------------------
+   Theme Controls
+----------------------------------- */
+body.page-acssa .theme-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+body.page-acssa .theme-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.02),
+    0 6px 16px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+body.page-acssa .slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+body.page-acssa .slider-button span {
+  font-size: 20px;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+  opacity: 0.5;
+}
+
+body.page-acssa .slider-button.active span {
+  opacity: 1;
+  color: #FF7F00;
+}
+
+body.page-acssa .slider-button:hover span {
+  opacity: 1;
+}
+
+body.page-acssa .slider-button:focus {
+  outline: 2px solid #FF7F00;
+  outline-offset: 2px;
+}
+
+body.page-acssa .slider-track {
+  width: 48px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+body.page-acssa .slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  user-select: none;
+}
+
+body.page-acssa .slider-thumb:active {
+  cursor: grabbing;
+}
+
+body.page-acssa .slider-thumb.dragging {
+  transition: none;
+}
+
+body.page-acssa .slider-thumb.dark {
+  left: 26px;
+}
+
+/* ---------------------------------
+   Theme Variations
+----------------------------------- */
+
+body.page-acssa.theme-animated {
+  background: white !important;
+}
+
+body.page-acssa.theme-light {
+  background: white !important;
+}
+
+body.page-acssa.theme-dark {
+  background: #0a0a0a !important;
+  color: #f5f5f5;
+}
+
+body.page-acssa.theme-dark a {
+  color: #f5f5f5;
+}
+
+body.page-acssa.theme-dark a:hover {
+  color: #FF7F00;
+}
+
+body.page-acssa.theme-dark .theme-slider {
+  background: rgba(20, 20, 20, 0.6);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 2px 6px rgba(255, 255, 255, 0.02),
+    0 6px 16px rgba(255, 255, 255, 0.03),
+    0 12px 32px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.page-acssa.theme-dark .slider-button span {
+  color: #f5f5f5;
+}
+
+body.page-acssa.theme-dark .slider-button.active span {
+  color: #FF7F00;
+}
