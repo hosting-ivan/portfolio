@@ -2,7 +2,7 @@
    Material Design 3 - CSS Variables
 ----------------------------------- */
 :root {
-  --md-sys-typescale-body-large-size: 15px;
+  --md-sys-typescale-body-large-size: 14px;
   --md-sys-typescale-body-large-line-height: 21px;
   --md-sys-typescale-body-large-weight: 450;
 
@@ -145,8 +145,25 @@ body.theme-dark *::-webkit-scrollbar-thumb {
 }
 
 @media (min-aspect-ratio: 2/1) {
+  .parent {
+    grid-template-columns: clamp(420px, 28%, 600px) minmax(0, min(65vw, 1300px));
+  }
+
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 16:9 / 16:10 displays: shrink sidebar AND tighten padding so media gets more room */
+@media (min-width: 905px) and (min-aspect-ratio: 16/10) and (max-aspect-ratio: 2/1) {
+  .parent {
+    grid-template-columns: clamp(300px, 18%, 380px) 1fr;
+    gap: var(--md-sys-spacing-6);
+    padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4) var(--md-sys-spacing-4);
+  }
+
+  .div2 {
+    padding: var(--md-sys-spacing-4);
   }
 }
 
@@ -182,9 +199,8 @@ video.full-image {
   grid-column: span 2;
   width: 100%;
   height: auto;
-  max-height: 60vh;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: var(--md-sys-shape-corner-medium);
   display: block;
   margin: 0;
@@ -210,6 +226,68 @@ video.full-video-contain {
 }
 
 /* ---------------------------------
+   Slideshow
+----------------------------------- */
+.slideshow {
+  grid-column: span 2;
+}
+
+.slideshow-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: #1a1a1a;
+}
+
+body.theme-dark .dot {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.theme-dark .dot.active {
+  background: #f5f5f5;
+}
+
+/* ---------------------------------
    Thumbnails & Videos (Option A)
 ----------------------------------- */
 .image,
@@ -220,13 +298,23 @@ video.full-video-contain {
   object-fit: cover;
   border-radius: var(--md-sys-shape-corner-medium);
 }
-.image2,
+.image2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
 .video2 {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: fill;
+  object-fit: contain;
   border-radius: var(--md-sys-shape-corner-medium);
+  /* Force GPU-accelerated rendering, smoother scaling */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* ---------------------------------
